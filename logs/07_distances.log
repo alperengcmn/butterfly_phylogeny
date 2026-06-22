@@ -1,0 +1,18 @@
+2026-06-22 16:17:24,990 [INFO] Loading supermatrix …
+2026-06-22 16:17:24,992 [INFO] Computing pairwise p-distances for 22 species …
+2026-06-22 16:17:25,065 [INFO] Distance matrix → results/distance_matrix.csv
+2026-06-22 16:17:25,067 [INFO] JC distance matrix → results/jc_distance_matrix.csv
+2026-06-22 16:17:25,067 [INFO] ─── 5 closest pairs ───────────────────────────────
+2026-06-22 16:17:25,067 [INFO]   0.0000  Ampittia dioscorides ↔ Arhopala japonica
+2026-06-22 16:17:25,067 [INFO]   0.0000  Ampittia dioscorides ↔ Danaus plexippus megalippe
+2026-06-22 16:17:25,067 [INFO]   0.0000  Ampittia dioscorides ↔ Delias pasithoe
+2026-06-22 16:17:25,067 [INFO]   0.0000  Ampittia dioscorides ↔ Eurema hecabe
+2026-06-22 16:17:25,067 [INFO]   0.0000  Ampittia dioscorides ↔ Papilio bianor
+2026-06-22 16:17:25,067 [INFO] ─── 5 most divergent pairs ─────────────────────────
+2026-06-22 16:17:25,067 [INFO]   0.2257  Delias pasithoe ↔ Vanessa indica
+2026-06-22 16:17:25,067 [INFO]   0.2185  Danaus plexippus ↔ Delias pasithoe
+2026-06-22 16:17:25,067 [INFO]   0.2066  Delias pasithoe ↔ Melitaea cinxia
+2026-06-22 16:17:25,067 [INFO]   0.2011  Delias pasithoe ↔ Lerema accius
+2026-06-22 16:17:25,067 [INFO]   0.1988  Ampittia dioscorides ↔ Pieris rapae
+2026-06-22 16:17:27,226 [INFO] Heatmap saved → figures/distance_heatmap.png
+2026-06-22 16:17:27,227 [INFO] Step 7 complete.

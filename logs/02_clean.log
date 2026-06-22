@@ -1,0 +1,6 @@
+2026-06-22 16:15:52,718 [INFO] COI: 20 → 2 sequences kept (-18 short, -0 ambig, -0 dup)
+2026-06-22 16:15:52,720 [INFO] COII: 17 → 15 sequences kept (-2 short, -0 ambig, -0 dup)
+2026-06-22 16:15:52,722 [INFO] CytB: 19 → 18 sequences kept (-1 short, -0 ambig, -0 dup)
+2026-06-22 16:15:52,725 [INFO] ND5: 20 → 12 sequences kept (-8 short, -0 ambig, -0 dup)
+2026-06-22 16:15:52,725 [INFO] QC stats written → data/cleaned/qc_stats.csv
+2026-06-22 16:15:52,725 [INFO] Step 2 complete. Total: 76 input → 47 output sequences (61.8% retained).

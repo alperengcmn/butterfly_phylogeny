@@ -1,0 +1,238 @@
+IQ-TREE 3.1.2 built May 17 2026
+
+Partition file name: data/concatenated/partitions.txt
+Input file name: data/concatenated/supermatrix.fasta
+Type of analysis: ModelFinder + tree reconstruction + ultrafast bootstrap (1000 replicates)
+Random seed number: 580535
+
+REFERENCES
+----------
+
+To cite IQ-TREE 3 please use:
+
+Thomas K.F. Wong, Nhan Ly-Trong, Huaiyan Ren, Hector Banos, Andrew J. Roger,
+Edward Susko, Chris Bielow, Nicola De Maio, Nick Goldman, Matthew W. Hahn,
+Gavin Huttley, Robert Lanfear, Bui Quang Minh (2025)
+IQ-TREE 3: Phylogenomic Inference Software using Complex Evolutionary Models.
+Submitted.
+
+Since you used ModelFinder please also cite: 
+
+Subha Kalyaanamoorthy, Bui Quang Minh, Thomas KF Wong, Arndt von Haeseler,
+and Lars S Jermiin (2017) ModelFinder: Fast model selection for
+accurate phylogenetic estimates. Nature Methods, 14:587–589.
+https://doi.org/10.1038/nmeth.4285
+
+Since you used ultrafast bootstrap (UFBoot) please also cite: 
+
+Diep Thi Hoang, Olga Chernomor, Arndt von Haeseler, Bui Quang Minh,
+and Le Sy Vinh (2018) UFBoot2: Improving the ultrafast bootstrap
+approximation. Mol. Biol. Evol., 35:518–522.
+https://doi.org/10.1093/molbev/msx281
+
+Since you used partition models please also cite:
+
+Olga Chernomor, Arndt von Haeseler, and Bui Quang Minh (2016)
+Terrace aware data structure for phylogenomic inference from
+supermatrices. Syst. Biol., 65:997-1008.
+https://doi.org/10.1093/sysbio/syw037
+
+SEQUENCE ALIGNMENT
+------------------
+
+NOTE: Alignment sequence type is auto-detected. If in doubt, specify it via -st option.
+Input data: 22 taxa with 4 partitions and 5181 total sites (49.5394% missing data)
+
+  ID	Type	Seq	Site	Unique	Infor	Invar	Const	Name
+   1	DNA	3	1536	22	0	1368	1368	COI
+   2	DNA	15	740	267	171	480	480	COII
+   3	DNA	18	1158	481	395	617	617	CytB
+   4	DNA	12	1747	558	511	987	987	ND5
+
+Column meanings:
+  Unique: Number of unique site patterns
+  Infor:  Number of parsimony-informative sites
+  Invar:  Number of invariant sites
+  Const:  Number of constant sites (can be subset of invariant sites)
+
+ModelFinder
+-----------
+
+Best-fit model according to BIC: GTR+F:COI,TIM2+F+I+G4:COII,GTR+F+I+G4:CytB,TIM+F+G4:ND5
+
+List of best-fit models per partition:
+
+  ID  Model                  LogL         AIC      w-AIC        AICc     w-AICc         BIC      w-BIC
+   1  GTR+F             -2561.315    5140.630 + 3.03e-314    5140.748 + 2.15e-314    5188.663 + 2.92e-314
+   2  TIM2+F+I+G4       -3739.533    7497.066 + 3.03e-314    7497.313 + 2.15e-314    7538.526 + 2.92e-314
+   3  GTR+F+I+G4        -8246.657   16515.313 + 3.03e-314   16515.544 + 2.15e-314   16570.912 + 2.92e-314
+   4  TIM+F+G4          -9152.944   18321.887 + 3.03e-314   18321.970 + 2.15e-314   18365.612 + 2.92e-314
+
+AIC, w-AIC   : Akaike information criterion scores and weights.
+AICc, w-AICc : Corrected AIC scores and weights.
+BIC, w-BIC   : Bayesian information criterion scores and weights.
+
+Plus signs denote the 95% confidence sets.
+Minus signs denote significant exclusion.
+
+SUBSTITUTION PROCESS
+--------------------
+
+Edge-linked-proportional partition model with separate substitution models and separate rates across sites
+
+  ID  Model           Speed  Parameters
+   1  GTR+F          0.3279  GTR{1.93724,2.57574,10.345,0.809527,8.58635}+F{0.282733,0.193139,0.190655,0.333474}
+   2  TIM2+F+I+G4    1.6640  TIM2{10.8155,14.0998,99.8906}+F{0.35077,0.123115,0.101785,0.424329}+I{0.435793}+G4{0.486294}
+   3  GTR+F+I+G4     1.5623  GTR{4.13953,17.6063,22.8936,5.7808,100}+F{0.333124,0.140584,0.0989311,0.427362}+I{0.382029}+G4{0.713977}
+   4  TIM+F+G4       0.9369  TIM{10.5714,4.27,2.68711}+F{0.340576,0.06298,0.113278,0.483166}+G4{0.35606}
+
+MAXIMUM LIKELIHOOD TREE
+-----------------------
+
+Log-likelihood of the tree: -23742.8412 (s.e. 357.7020)
+Unconstrained log-likelihood (without tree): -18226.2406
+Number of free parameters (#branches + #model parameters): 77
+Akaike information criterion (AIC) score: 47639.6824
+Corrected Akaike information criterion (AICc) score: 47642.0363
+Bayesian information criterion (BIC) score: 48144.2444
+
+Marginal log-likelihood of the tree: -27713.4262
+Marginal Akaike information criterion (mAIC) score: 55580.8525
+
+Total tree length (sum of branch lengths): 2.3995
+Sum of internal branch lengths: 0.5274 (21.9798% of tree length)
+
+NOTE: Tree is UNROOTED although outgroup taxon 'Arhopala_japonica' is drawn at root
+Numbers in parentheses are  ultrafast bootstrap support (%)
+
++-----------------Arhopala_japonica
+|
+|                         +--------------Lerema_accius
+|                      +--| (54)
+|                      |  +----------------Danaus_plexippus_megalippe
+|                  +---| (58)
+|                  |   +----------------Ampittia_dioscorides
+|               +--| (59)
+|               |  |               +------Papilio_bianor
+|               |  |            +--| (47)
+|               |  |            |  +-------Papilio_polytes
+|               |  |         +--| (46)
+|               |  |         |  +----------Papilio_glaucus
+|               |  |      +--| (47)
+|               |  |      |  |  +------Papilio_xuthus
+|               |  |      |  +--| (44)
+|               |  |      |     +---------Papilio_machaon
+|               |  +------| (100)
+|               |         +----Papilio_machaon_annae
+|            +--| (50)
+|            |  |            +-----------------------------Delias_pasithoe
+|            |  +------------| (100)
+|            |               |     +------Eurema_hecabe
+|            |               |  +--| (63)
+|            |               |  |  +--------------Gonepteryx_rhamni
+|            |               +--| (60)
+|            |                  |      +--------Pieris_rapae
+|            |                  +------| (99)
+|            |                         +---Pieris_napi_napi
+|       +----| (100)
+|       |    |          +----Vanessa_cardui
+|       |    |       +--| (100)
+|       |    |       |  +--------Vanessa_indica
+|       |    |  +----| (98)
+|       |    |  |    |  +------Junonia_almana
+|       |    |  |    +--| (89)
+|       |    |  |       +----------------Melitaea_cinxia
+|       |    +--| (84)
+|       |       +--------------------------Danaus_plexippus
++-------| (99)
+|       +------------Curetis_bulis
+|
++----Lycaena_phlaeas
+
+Tree in newick format:
+
+(Arhopala_japonica:0.1285143083,((((((Lerema_accius:0.1061937418,Danaus_plexippus_megalippe:0.1219704037)54:0.0174407197,Ampittia_dioscorides:0.1186843189)58:0.0303649567,((((Papilio_bianor:0.0540157649,Papilio_polytes:0.0564978117)47:0.0063328194,Papilio_glaucus:0.0760726344)46:0.0041916132,(Papilio_xuthus:0.0531907203,Papilio_machaon:0.0722716173)44:0.0037817776)47:0.0079744593,Papilio_machaon_annae:0.0363370465)100:0.0490613388)59:0.0198090407,(Delias_pasithoe:0.2076687362,((Eurema_hecabe:0.0493915635,Gonepteryx_rhamni:0.1049900257)63:0.0199373961,(Pieris_rapae:0.0624529536,Pieris_napi_napi:0.0332777888)99:0.0535202487)60:0.0162140563)100:0.0921945737)50:0.0107931409,(((Vanessa_cardui:0.0395262767,Vanessa_indica:0.0665695287)100:0.0261147624,(Junonia_almana:0.0536164216,Melitaea_cinxia:0.1158507418)89:0.0191045692)98:0.0365268372,Danaus_plexippus:0.1841268886)84:0.0179922902)100:0.0405759595,Curetis_bulis:0.0929176724)99:0.0554752532,Lycaena_phlaeas:0.0379560610);
+
+CONSENSUS TREE
+--------------
+
+Consensus tree is constructed from 1000 bootstrap trees
+Log-likelihood of consensus tree: -23742.841765
+Robinson-Foulds distance between ML tree and consensus tree: 0
+
+Branches with support >0.000000% are kept (extended consensus)
+Branch lengths are optimized by maximum likelihood on original alignment
+Numbers in parentheses are bootstrap supports (%)
+
++-----------------Arhopala_japonica
+|
+|                         +--------------Lerema_accius
+|                      +--| (54)
+|                      |  +-----------------Danaus_plexippus_megalippe
+|                  +---| (58)
+|                  |   +----------------Ampittia_dioscorides
+|               +--| (59)
+|               |  |               +------Papilio_bianor
+|               |  |            +--| (47)
+|               |  |            |  +-------Papilio_polytes
+|               |  |         +--| (46)
+|               |  |         |  +----------Papilio_glaucus
+|               |  |      +--| (47)
+|               |  |      |  |  +------Papilio_xuthus
+|               |  |      |  +--| (44)
+|               |  |      |     +---------Papilio_machaon
+|               |  +------| (100)
+|               |         +----Papilio_machaon_annae
+|            +--| (50)
+|            |  |            +-----------------------------Delias_pasithoe
+|            |  +------------| (100)
+|            |               |     +------Eurema_hecabe
+|            |               |  +--| (63)
+|            |               |  |  +--------------Gonepteryx_rhamni
+|            |               +--| (60)
+|            |                  |      +--------Pieris_rapae
+|            |                  +------| (99)
+|            |                         +---Pieris_napi_napi
+|       +----| (100)
+|       |    |          +----Vanessa_cardui
+|       |    |       +--| (100)
+|       |    |       |  +--------Vanessa_indica
+|       |    |  +----| (98)
+|       |    |  |    |  +------Junonia_almana
+|       |    |  |    +--| (89)
+|       |    |  |       +----------------Melitaea_cinxia
+|       |    +--| (84)
+|       |       +--------------------------Danaus_plexippus
++-------| (99)
+|       +------------Curetis_bulis
+|
++----Lycaena_phlaeas
+
+
+Consensus tree in newick format: 
+
+(Arhopala_japonica:0.1285186819,((((((Lerema_accius:0.1055952351,Danaus_plexippus_megalippe:0.1219695947)54:0.0183046575,Ampittia_dioscorides:0.1187752049)58:0.0301589200,((((Papilio_bianor:0.0540116489,Papilio_polytes:0.0565054898)47:0.0063420837,Papilio_glaucus:0.0760896017)46:0.0041817624,(Papilio_xuthus:0.0531981301,Papilio_machaon:0.0722840402)44:0.0037925331)47:0.0080004455,Papilio_machaon_annae:0.0363372018)100:0.0490394403)59:0.0198293500,(Delias_pasithoe:0.2077159936,((Eurema_hecabe:0.0494073084,Gonepteryx_rhamni:0.1050011813)63:0.0199232027,(Pieris_rapae:0.0624549122,Pieris_napi_napi:0.0332838097)99:0.0535577870)60:0.0162016303)100:0.0922276182)50:0.0108008932,(((Vanessa_cardui:0.0395342663,Vanessa_indica:0.0665779334)100:0.0261172425,(Junonia_almana:0.0536212200,Melitaea_cinxia:0.1158651858)89:0.0191062140)98:0.0365347388,Danaus_plexippus:0.1841494903)84:0.0179870363)100:0.0406035711,Curetis_bulis:0.0929288200)99:0.0551851002,Lycaena_phlaeas:0.0382176693);
+
+ALISIM COMMAND
+--------------
+To simulate an alignment of the same length as the original alignment, using the tree and model parameters estimated from this analysis, you can use the following command:
+
+--alisim simulated_MSA -t results/tree/butterfly.treefile -p results/tree/butterfly.best_model.nex
+
+To mimic the alignment used to produce this analysis, i.e. simulate an alignment of the same length as the original alignment, using the tree and model parameters estimated from this analysis *and* copying the same gap positions as the original alignment, you can use the following command:
+
+iqtree -s data/concatenated/supermatrix.fasta --alisim mimicked_MSA
+
+To simulate any number of alignments in either of the two commandlines above, use the --num-alignments options, for example mimic 100 alignments you would use the command line:
+
+iqtree -s data/concatenated/supermatrix.fasta --alisim mimicked_MSA --num-alignments 100
+
+For more information on using AliSim, please visit: www.iqtree.org/doc/AliSim
+
+TIME STAMP
+----------
+
+Date and time: Mon Jun 22 16:17:10 2026
+Total CPU time used: 66.885345 seconds (0h:1m:6s)
+Total wall-clock time used: 68.23634291 seconds (0h:1m:8s)
+

@@ -1,0 +1,77 @@
+species,accession,gene,sequence_length,ncbi_id,organism
+Papilio machaon,PV173971.1,COI,658,PV173971.1,Papilio machaon
+Papilio machaon,MK602655.1,COII,682,MK602655.1,Papilio machaon annae
+Papilio machaon,NC_018047.1,CytB,1149,NC_018047.1,Papilio machaon
+Papilio machaon,AB175844.1,ND5,425,AB175844.1,Papilio machaon hippocrates
+Papilio xuthus,MW085739.1,COI,658,MW085739.1,Papilio xuthus
+Papilio xuthus,LC189138.1,COII,726,LC189138.1,Papilio xuthus
+Papilio xuthus,NC_029244.1,CytB,1146,NC_029244.1,Papilio xuthus
+Papilio xuthus,AB096804.1,ND5,877,AB096804.1,Papilio xuthus
+Papilio glaucus,HQ985596.1,COI,658,HQ985596.1,Papilio glaucus
+Papilio glaucus,AF044013.1,COII,682,AF044013.1,Papilio glaucus
+Papilio glaucus,NC_027252.1,CytB,1155,NC_027252.1,Papilio glaucus
+Papilio glaucus,NC_027252.1,ND5,1719,NC_027252.1,Papilio glaucus
+Papilio polytes,PZ111109.1,COI,633,PZ111109.1,Papilio polytes
+Papilio polytes,LC189134.1,COII,726,LC189134.1,Papilio polytes
+Papilio polytes,NC_024742.1,CytB,1149,NC_024742.1,Papilio polytes
+Papilio polytes,NC_024742.1,ND5,1722,NC_024742.1,Papilio polytes
+Papilio bianor,MN727320.1,COI,658,MN727320.1,Papilio bianor
+Papilio bianor,DQ240869.1,COII,645,DQ240869.1,Papilio bianor
+Papilio bianor,NC_018040.1,CytB,1149,NC_018040.1,Papilio bianor
+Papilio bianor,AB175840.1,ND5,425,AB175840.1,Papilio bianor
+Pieris rapae,PZ027487.1,COI,627,PZ027487.1,Pieris rapae
+Pieris rapae,GQ268364.1,COII,626,GQ268364.1,Pieris rapae
+Pieris rapae,PX893061.1,CytB,1152,PX893061.1,Pieris rapae
+Pieris rapae,PX893061.1,ND5,1725,PX893061.1,Pieris rapae
+Pieris napi,OR891179.1,COI,610,OR891179.1,Pieris napi
+Pieris napi,ON216400.1,COII,589,ON216400.1,Pieris napi sauron
+Pieris napi,NC_061692.1,CytB,1152,NC_061692.1,Pieris napi napi
+Pieris napi,AB175855.1,ND5,425,AB175855.1,Pieris napi
+Gonepteryx rhamni,OR890776.1,COI,640,OR890776.1,Gonepteryx rhamni
+Gonepteryx rhamni,NC_026046.1,COII,676,NC_026046.1,Gonepteryx rhamni
+Gonepteryx rhamni,NC_026046.1,CytB,1147,NC_026046.1,Gonepteryx rhamni
+Gonepteryx rhamni,NC_026046.1,ND5,1741,NC_026046.1,Gonepteryx rhamni
+Delias pasithoe,MK317930.1,COI,635,MK317930.1,Delias pasithoe
+Delias pasithoe,KM669574.1,COII,673,KM669574.1,Delias pasithoe
+Delias pasithoe,NC_047457.1,CytB,1152,NC_047457.1,Delias pasithoe
+Delias pasithoe,AB055832.1,ND5,877,AB055832.1,Delias pasithoe
+Eurema hecabe,LC699625.1,COI,599,LC699625.1,Eurema hecabe
+Eurema hecabe,NC_022685.1,COII,676,NC_022685.1,Eurema hecabe
+Eurema hecabe,NC_022685.1,CytB,1147,NC_022685.1,Eurema hecabe
+Eurema hecabe,AB175861.1,ND5,425,AB175861.1,Eurema hecabe
+Danaus plexippus,OP587026.1,COI,658,OP587026.1,Danaus plexippus
+Danaus plexippus,AY569157.1,COII,662,AY569157.1,Danaus plexippus megalippe
+Danaus plexippus,NC_021452.1,CytB,1149,NC_021452.1,Danaus plexippus
+Danaus plexippus,NC_021452.1,ND5,1735,NC_021452.1,Danaus plexippus
+Vanessa indica,OQ651279.1,COI,649,OQ651279.1,Vanessa indica
+Vanessa indica,NC_038157.1,CytB,1152,NC_038157.1,Vanessa indica
+Vanessa indica,AB175865.1,ND5,425,AB175865.1,Vanessa indica
+Vanessa cardui,PV080531.1,COI,660,PV080531.1,Vanessa cardui
+Vanessa cardui,GQ268357.1,COII,626,GQ268357.1,Vanessa cardui
+Vanessa cardui,PQ540662.1,CytB,1152,PQ540662.1,Vanessa cardui
+Vanessa cardui,PQ540662.1,ND5,1732,PQ540662.1,Vanessa cardui
+Junonia almana,OQ646651.1,COI,628,OQ646651.1,Junonia almana
+Junonia almana,NC_024407.1,CytB,1147,NC_024407.1,Junonia almana
+Junonia almana,NC_024407.1,ND5,1732,NC_024407.1,Junonia almana
+Melitaea cinxia,OR891065.1,COI,657,OR891065.1,Melitaea cinxia
+Melitaea cinxia,NC_018029.1,CytB,1147,NC_018029.1,Melitaea cinxia
+Melitaea cinxia,NC_018029.1,ND5,1735,NC_018029.1,Melitaea cinxia
+Lycaena phlaeas,OR890860.1,COI,639,OR890860.1,Lycaena phlaeas
+Lycaena phlaeas,FJ490458.1,COII,650,FJ490458.1,Lycaena phlaeas
+Lycaena phlaeas,NC_023087.1,CytB,1146,NC_023087.1,Lycaena phlaeas
+Lycaena phlaeas,NC_023087.1,ND5,1736,NC_023087.1,Lycaena phlaeas
+Arhopala japonica,AB195513.1,COI,1323,AB195513.1,Arhopala japonica
+Arhopala japonica,AB195513.1,COII,679,AB195513.1,Arhopala japonica
+Arhopala japonica,AB107978.1,ND5,815,AB107978.1,Arhopala japonica
+Curetis bulis,DQ018942.1,COI,980,DQ018942.1,Curetis bulis
+Curetis bulis,EU024665.1,COII,620,EU024665.1,Curetis bulis
+Curetis bulis,NC_023088.1,CytB,1128,NC_023088.1,Curetis bulis
+Curetis bulis,NC_023088.1,ND5,1740,NC_023088.1,Curetis bulis
+Ampittia dioscorides,PP668410.1,COI,706,PP668410.1,Ampittia dioscorides
+Ampittia dioscorides,PP668410.1,COII,156,PP668410.1,Ampittia dioscorides
+Ampittia dioscorides,KM975708.1,CytB,390,KM975708.1,Ampittia dioscorides
+Ampittia dioscorides,KM102732.1,ND5,1738,KM102732.1,Ampittia dioscorides
+Lerema accius,NC_029826.1,COI,1531,NC_029826.1,Lerema accius
+Lerema accius,NC_029826.1,COII,679,NC_029826.1,Lerema accius
+Lerema accius,NC_029826.1,CytB,1152,NC_029826.1,Lerema accius
+Lerema accius,NC_029826.1,ND5,1740,NC_029826.1,Lerema accius

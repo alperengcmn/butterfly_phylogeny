@@ -1,0 +1,5 @@
+gene,input_seqs,removed_short,removed_ambig,removed_dup,output_seqs
+COI,20,18,0,0,2
+COII,17,2,0,0,15
+CytB,19,1,0,0,18
+ND5,20,8,0,0,12

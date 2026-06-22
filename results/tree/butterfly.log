@@ -1,0 +1,274 @@
+IQ-TREE version 3.1.2 for MacOS ARM 64-bit built May 17 2026
+Developed by Bui Quang Minh, Thomas Wong, Nhan Ly-Trong, Huaiyan Ren
+Contributed by Lam-Tung Nguyen, Dominik Schrempf, Chris Bielow,
+Olga Chernomor, Michael Woodhams, Diep Thi Hoang, Heiko Schmidt
+
+Host:    Alperen-MacBook-Air.local (SSE4.2, 8 GB RAM)
+Command: /opt/miniconda3/bin/iqtree -s data/concatenated/supermatrix.fasta -p data/concatenated/partitions.txt -m MFP -B 1000 -T AUTO --prefix results/tree/butterfly --redo
+Seed:    580535 (Using SPRNG - Scalable Parallel Random Number Generator)
+Time:    Mon Jun 22 16:16:02 2026
+Kernel:  SSE2 - auto-detect threads (8 CPU cores detected)
+
+Reading partition model file data/concatenated/partitions.txt ...
+Reading alignment file data/concatenated/supermatrix.fasta ... Fasta format detected
+Reading fasta file: done in 0.00208902 secs using 89.8% CPU
+Alignment most likely contains DNA/RNA sequences
+Constructing alignment: done in 0.00374293 secs using 54.21% CPU
+Alignment has 22 sequences with 5181 columns, 1327 distinct patterns
+1077 parsimony-informative, 652 singleton sites, 3452 constant sites
+                            Gap/Ambiguity  Composition  p-value
+Analyzing sequences: done in 0.000106812 secs using 138.6% CPU
+   1  Ampittia_dioscorides         66.45%    failed      0.00%
+   2  Arhopala_japonica            61.36%    failed      0.10%
+   3  Curetis_bulis                32.68%    failed      2.46%
+   4  Danaus_plexippus             44.34%    failed      1.66%
+   5  Danaus_plexippus_megalippe   87.22%    passed     41.64%
+   6  Delias_pasithoe              64.78%    failed      0.00%
+   7  Eurema_hecabe                64.81%    failed      0.17%
+   8  Gonepteryx_rhamni            31.21%    passed     17.48%
+   9  Junonia_almana               44.43%    failed      1.68%
+  10  Lerema_accius                 1.52%    passed     31.50%
+  11  Lycaena_phlaeas              31.83%    failed      0.09%
+  12  Melitaea_cinxia              44.37%    failed      2.19%
+  13  Papilio_bianor               65.37%    failed      0.01%
+  14  Papilio_glaucus              31.36%    passed     52.69%
+  15  Papilio_machaon              77.82%    failed      0.09%
+  16  Papilio_machaon_annae        86.84%    passed     82.29%
+  17  Papilio_polytes              30.57%    passed     17.59%
+  18  Papilio_xuthus               63.87%    failed      0.13%
+  19  Pieris_napi_napi             77.76%    failed      0.04%
+  20  Pieris_rapae                 32.39%    passed     41.00%
+  21  Vanessa_cardui               32.25%    failed      3.30%
+  22  Vanessa_indica               77.76%    failed      0.01%
+WARNING: 11 sequences contain more than 50% gaps/ambiguity
+****  TOTAL                        52.32%  15 sequences failed composition chi2 test (p-value<5%; df=3)
+NOTE: No CharPartition defined, use all CharSets
+
+Loading 4 partitions...
+Identifying sites to remove: done in 0.000256062 secs using 97.24% CPU
+Identifying sites to remove: done in 0.000292063 secs using 95.53% CPU
+Identifying sites to remove: done in 0.000484943 secs using 95.68% CPU
+Identifying sites to remove: done in 0.000684977 secs using 87.16% CPU
+Subset	Type	Seqs	Sites	Infor	Invar	Model	Name
+1		3	1536	0	1368	MFP	COI
+WARNING: No parsimony-informative sites in partition COI
+2		15	740	171	480	MFP	COII
+3		18	1158	395	617	MFP	CytB
+4		12	1747	511	987	MFP	ND5
+Degree of missing data: 0.495
+
+
+
+Create initial parsimony tree by phylogenetic likelihood library (PLL)... 0.004 seconds
+Measuring multi-threading efficiency up to 8 CPU cores
+Increase to 10 rounds for branch lengths
+114 trees examined
+Threads: 1 / Time: 8.058 sec / Speedup: 1.000 / Efficiency: 100% / LogL: -25738
+Threads: 2 / Time: 8.785 sec / Speedup: 0.917 / Efficiency: 46% / LogL: -25738
+Determining AUTO threadcount: done in 16.8435 secs using 109.8% CPU
+BEST NUMBER OF THREADS: 1
+
+Perform fast likelihood tree search using GTR+I+G model...
+Estimate model parameters (epsilon = 5.000)
+Initial log-likelihood: -24781.455
+Current log-likelihood at step 1: -23797.836
+Current log-likelihood at step 2: -23769.106
+Current log-likelihood at step 3: -23763.970
+Current log-likelihood at step 4: -23761.425
+Parameters optimization took 3 rounds (0.629 sec)
+
+
+WARNING: Estimated model parameters are at boundary that can cause numerical instability!
+
+Perform nearest neighbor interchange...
+Estimate model parameters (epsilon = 1.000)
+Initial log-likelihood: -23751.506
+Current log-likelihood at step 1: -23749.632
+Current log-likelihood at step 2: -23748.158
+Current log-likelihood at step 3: -23746.944
+Current log-likelihood at step 4: -23745.921
+Current log-likelihood at step 5: -23745.038
+Partition-specific rates:  0.487 1.586 1.465 0.894
+Parameters optimization took 4 rounds (0.473 sec)
+
+
+WARNING: Estimated model parameters are at boundary that can cause numerical instability!
+
+Time for fast ML tree search: 1.241 seconds
+
+NOTE: ModelFinder requires 4 MB RAM!
+Selecting individual models for 4 charsets using BIC...
+ No. Model        Score       TreeLen     Charset
+   1 GTR+F        5188.663    0.185       COI
+   2 TIM2+F+I+G4  7538.526    2.990       COII
+   3 GTR+F+I+G4   16570.912   3.058       CytB
+   4 TIM+F+G4     18365.612   1.478       ND5
+Full partition model BIC score: 48059.459 (LnL: -23700.448  df:77)
+Partition information was printed to results/tree/butterfly.best_scheme.nex
+Partition information in Raxml format was printed to results/tree/butterfly.best_scheme
+
+All model information printed to results/tree/butterfly.model.gz
+CPU time for ModelFinder: 32.803 seconds (0h:0m:32s)
+Wall-clock time for ModelFinder: 31.595 seconds (0h:0m:31s)
+Generating 1000 samples for ultrafast bootstrap (seed: 580535)...
+
+NOTE: 7 MB RAM (0 GB) is required!
+Estimate model parameters (epsilon = 0.100)
+Initial log-likelihood: -23926.063
+Current log-likelihood at step 1: -23757.093
+Current log-likelihood at step 2: -23751.200
+Current log-likelihood at step 3: -23750.719
+Current log-likelihood at step 4: -23750.422
+Current log-likelihood at step 5: -23750.250
+Current log-likelihood at step 6: -23750.149
+Current log-likelihood at step 7: -23750.087
+Partition-specific rates:  0.330 1.696 1.523 0.948
+Parameters optimization took 6 rounds (0.503 sec)
+
+
+WARNING: Estimated model parameters are at boundary that can cause numerical instability!
+
+Wrote distance file to... 
+Computing ML distances based on estimated model parameters...
+Calculating distance matrix: done in 9.39369e-05 secs using 90.49% CPU
+Computing ML distances took 0.000147 sec (of wall-clock time) 0.000119 sec (of CPU time)
+WARNING: Some pairwise ML distances are too long (saturated)
+Setting up auxiliary I and S matrices: done in 5.79357e-05 secs using 58.69% CPU
+Constructing RapidNJ tree: done in 8.70228e-05 secs using 125.3% CPU
+Computing RapidNJ tree took 0.000212 sec (of wall-clock time) 0.000182 sec (of CPU time)
+Log-likelihood of RapidNJ tree: -24682.751
+--------------------------------------------------------------------
+|             INITIALIZING CANDIDATE TREE SET                      |
+--------------------------------------------------------------------
+Generating 98 parsimony trees... 0.797 second
+Computing log-likelihood of 98 initial trees ... 1.323 seconds
+Current best score: -23750.087
+
+Do NNI search on 20 best initial trees
+Estimate model parameters (epsilon = 0.100)
+Initial log-likelihood: -23748.986
+Current log-likelihood at step 1: -23748.823
+Current log-likelihood at step 2: -23748.761
+Parameters optimization took 1 rounds (0.160 sec)
+
+
+WARNING: Estimated model parameters are at boundary that can cause numerical instability!
+
+BETTER TREE FOUND at iteration 1: -23748.761
+Estimate model parameters (epsilon = 0.100)
+Initial log-likelihood: -23745.023
+Current log-likelihood at step 1: -23744.884
+Current log-likelihood at step 2: -23744.826
+Parameters optimization took 1 rounds (0.189 sec)
+
+
+WARNING: Estimated model parameters are at boundary that can cause numerical instability!
+
+BETTER TREE FOUND at iteration 2: -23744.826
+Iteration 10 / LogL: -23744.907 / Time: 0h:0m:38s
+Estimate model parameters (epsilon = 0.100)
+Initial log-likelihood: -23744.257
+Current log-likelihood at step 1: -23744.189
+Parameters optimization took 0 rounds (0.069 sec)
+
+
+WARNING: Estimated model parameters are at boundary that can cause numerical instability!
+
+BETTER TREE FOUND at iteration 12: -23744.189
+Iteration 20 / LogL: -23744.879 / Time: 0h:0m:42s
+Finish initializing candidate tree set (8)
+Current best tree score: -23744.189 / CPU time: 9.762
+Number of iterations: 20
+--------------------------------------------------------------------
+|               OPTIMIZING CANDIDATE TREE SET                      |
+--------------------------------------------------------------------
+Estimate model parameters (epsilon = 0.100)
+Initial log-likelihood: -23743.033
+Current log-likelihood at step 1: -23742.956
+Parameters optimization took 0 rounds (0.066 sec)
+
+
+WARNING: Estimated model parameters are at boundary that can cause numerical instability!
+
+BETTER TREE FOUND at iteration 24: -23742.956
+Estimate model parameters (epsilon = 0.100)
+Initial log-likelihood: -23742.912
+Current log-likelihood at step 1: -23742.869
+Parameters optimization took 0 rounds (0.054 sec)
+
+
+WARNING: Estimated model parameters are at boundary that can cause numerical instability!
+
+BETTER TREE FOUND at iteration 25: -23742.869
+Iteration 30 / LogL: -23743.001 / Time: 0h:0m:44s (0h:0m:43s left)
+Iteration 40 / LogL: -23744.281 / Time: 0h:0m:47s (0h:0m:34s left)
+UPDATE BEST LOG-LIKELIHOOD: -23742.868
+Iteration 50 / LogL: -23742.868 / Time: 0h:0m:49s (0h:0m:27s left)
+Log-likelihood cutoff on original alignment: -23787.320
+Iteration 60 / LogL: -23744.244 / Time: 0h:0m:52s (0h:0m:22s left)
+Iteration 70 / LogL: -23743.623 / Time: 0h:0m:54s (0h:0m:18s left)
+Iteration 80 / LogL: -23742.885 / Time: 0h:0m:56s (0h:0m:14s left)
+Iteration 90 / LogL: -23742.915 / Time: 0h:0m:59s (0h:0m:10s left)
+Iteration 100 / LogL: -23742.997 / Time: 0h:1m:1s (0h:0m:7s left)
+Log-likelihood cutoff on original alignment: -23787.320
+NOTE: Bootstrap correlation coefficient of split occurrence frequencies: 0.998
+Iteration 110 / LogL: -23742.943 / Time: 0h:1m:4s (0h:0m:26s left)
+Iteration 120 / LogL: -23742.882 / Time: 0h:1m:6s (0h:0m:23s left)
+TREE SEARCH COMPLETED AFTER 126 ITERATIONS / Time: 0h:1m:7s
+
+--------------------------------------------------------------------
+|                    FINALIZING TREE SEARCH                        |
+--------------------------------------------------------------------
+Performs final model parameters optimization
+Estimate model parameters (epsilon = 0.010)
+Initial log-likelihood: -23742.868
+Current log-likelihood at step 1: -23742.850
+Current log-likelihood at step 2: -23742.841
+Partition-specific rates:  0.328 1.664 1.562 0.937
+Parameters optimization took 1 rounds (0.097 sec)
+
+
+WARNING: Estimated model parameters are at boundary that can cause numerical instability!
+
+Partition information was printed to results/tree/butterfly.best_model.nex
+BEST SCORE FOUND : -23742.841
+Creating bootstrap support values...
+Split supports printed to NEXUS file results/tree/butterfly.splits.nex
+Total tree length: 2.399
+
+Total number of iterations: 126
+CPU time used for tree search: 33.281 sec (0h:0m:33s)
+Wall-clock time used for tree search: 35.714 sec (0h:0m:35s)
+Total CPU time used: 66.885 sec (0h:1m:6s)
+Total wall-clock time used: 68.129 sec (0h:1m:8s)
+
+Computing bootstrap consensus tree...
+Reading input file results/tree/butterfly.splits.nex...
+22 taxa and 123 splits.
+Consensus tree written to results/tree/butterfly.contree
+Reading input trees file results/tree/butterfly.contree
+Log-likelihood of consensus tree: -23742.842
+Identifying sites to remove: done in 0.000262976 secs using 95.83% CPU
+Identifying sites to remove: done in 0.000227928 secs using 96.52% CPU
+Identifying sites to remove: done in 0.000129938 secs using 93.89% CPU
+Identifying sites to remove: done in 0.00036788 secs using 96.77% CPU
+Identifying sites to remove: done in 0.000272989 secs using 96.34% CPU
+Identifying sites to remove: done in 0.000547886 secs using 97.47% CPU
+Identifying sites to remove: done in 0.000526905 secs using 98.31% CPU
+Identifying sites to remove: done in 0.000283003 secs using 97.53% CPU
+Identifying sites to remove: done in 0.000586987 secs using 98.64% CPU
+Identifying sites to remove: done in 0.00078392 secs using 95.16% CPU
+
+Analysis results written to: 
+  IQ-TREE report:                results/tree/butterfly.iqtree
+  Maximum-likelihood tree:       results/tree/butterfly.treefile
+  Likelihood distances:          results/tree/butterfly.mldist
+  Best partitioning scheme:      results/tree/butterfly.best_scheme.nex
+           in RAxML format:      results/tree/butterfly.best_scheme
+
+Ultrafast bootstrap approximation results written to:
+  Split support values:          results/tree/butterfly.splits.nex
+  Consensus tree:                results/tree/butterfly.contree
+  Screen log file:               results/tree/butterfly.log
+
+Date and Time: Mon Jun 22 16:17:10 2026

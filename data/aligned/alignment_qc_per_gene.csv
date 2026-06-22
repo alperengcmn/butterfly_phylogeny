@@ -1,0 +1,5 @@
+gene,n_sequences,alignment_length,overall_gap_fraction,mean_seq_gap_fraction,mean_gc_content,conserved_sites,variable_sites,parsimony_informative_sites
+COI,2,1536,0.071,0.071,0.2704,1368,168,0
+COII,15,740,0.0966,0.0966,0.2249,480,260,171
+CytB,18,1158,0.0083,0.0083,0.2395,617,541,395
+ND5,12,1747,0.0081,0.0081,0.1756,987,760,511

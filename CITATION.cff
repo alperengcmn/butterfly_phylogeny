@@ -1,0 +1,59 @@
+cff-version: 1.2.0
+message: "If you use this pipeline, please cite it as below."
+type: software
+title: "Butterfly Phylogenomics Pipeline"
+abstract: >
+  A fully reproducible end-to-end phylogenetic analysis pipeline for 20 butterfly
+  species using four mitochondrial protein-coding genes (COI, COII, CytB, ND5).
+  Includes automated NCBI data collection, MAFFT alignment, IQ-TREE ML phylogeny,
+  genetic distance analysis, and publication-quality visualisation.
+authors:
+  - family-names: "Alperen"
+    given-names: ""
+    email: "alperen8490@gmail.com"
+version: 1.0.0
+date-released: "2026-06-22"
+license: MIT
+repository-code: "https://github.com/alperen8490/butterfly-phylogeny"
+keywords:
+  - phylogenetics
+  - lepidoptera
+  - butterfly
+  - mitochondrial DNA
+  - IQ-TREE
+  - MAFFT
+  - bioinformatics
+  - reproducible research
+references:
+  - type: article
+    authors:
+      - family-names: "Minh"
+        given-names: "B.Q."
+    title: "IQ-TREE 2: New Models and Methods for Phylogenetic Inference"
+    journal: "Molecular Biology and Evolution"
+    volume: 37
+    year: 2020
+    pages: "1530-1534"
+    doi: "10.1093/molbev/msaa015"
+  - type: article
+    authors:
+      - family-names: "Katoh"
+        given-names: "K."
+      - family-names: "Standley"
+        given-names: "D.M."
+    title: "MAFFT Multiple Sequence Alignment Software Version 7"
+    journal: "Molecular Biology and Evolution"
+    volume: 30
+    year: 2013
+    pages: "772-780"
+    doi: "10.1093/molbev/mst010"
+  - type: article
+    authors:
+      - family-names: "Cock"
+        given-names: "P.J.A."
+    title: "Biopython: freely available Python tools for computational molecular biology"
+    journal: "Bioinformatics"
+    volume: 25
+    year: 2009
+    pages: "1422-1423"
+    doi: "10.1093/bioinformatics/btp163"

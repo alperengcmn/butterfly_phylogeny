@@ -1,0 +1,51 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+.Python
+*.egg-info/
+dist/
+build/
+.eggs/
+.venv/
+venv/
+env/
+
+# Data — raw downloads (large, reproducible via pipeline)
+data/raw/*.gb
+data/raw/*.gbk
+data/raw/*.genbank
+
+# Logs (optional — keep if you want CI logs tracked)
+# logs/
+
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+._*
+
+# IQ-TREE checkpoints (large, regenerated each run)
+results/tree/*.ckp.gz
+results/tree/*.gz
+results/tree/*.splits.nex
+results/tree/*.bionj
+
+# Jupyter
+.ipynb_checkpoints/
+*.ipynb
+
+# Conda / pip cache
+.conda/
+pip-log.txt
+
+# IDE
+.vscode/settings.json
+.idea/
+*.swp
+*.swo
+
+# OS
+Thumbs.db
+ehthumbs.db

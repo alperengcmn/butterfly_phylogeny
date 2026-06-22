@@ -1,0 +1,97 @@
+BUTTERFLY PHYLOGENOMICS PROJECT — SUMMARY REPORT
+Generated: 2026-06-22 16:17:31
+
+
+========================================================================
+  1. SPECIES
+========================================================================
+  Total target species: 20
+    · Papilio machaon
+    · Papilio xuthus
+    · Papilio glaucus
+    · Papilio polytes
+    · Papilio bianor
+    · Pieris rapae
+    · Pieris napi
+    · Gonepteryx rhamni
+    · Delias pasithoe
+    · Eurema hecabe
+    · Danaus plexippus
+    · Vanessa indica
+    · Vanessa cardui
+    · Junonia almana
+    · Melitaea cinxia
+    · Lycaena phlaeas
+    · Arhopala japonica
+    · Curetis bulis
+    · Ampittia dioscorides
+    · Lerema accius
+
+========================================================================
+  2. DATA COLLECTION (Step 1)
+========================================================================
+  Total sequences downloaded : 76
+    COI   : 20 sequences
+    COII  : 17 sequences
+    CytB  : 19 sequences
+    ND5   : 20 sequences
+
+========================================================================
+  3. SEQUENCE QUALITY CONTROL (Step 2)
+========================================================================
+  COI   : 20 in → 2 out  (-18 short, -0 ambig, -0 dup)
+  COII  : 17 in → 15 out  (-2 short, -0 ambig, -0 dup)
+  CytB  : 19 in → 18 out  (-1 short, -0 ambig, -0 dup)
+  ND5   : 20 in → 12 out  (-8 short, -0 ambig, -0 dup)
+
+========================================================================
+  4. MULTIPLE SEQUENCE ALIGNMENT (Steps 3–4)
+========================================================================
+  Gene      Seqs   Length   Gap%  Conserved  Variable  PI sites
+  -------------------------------------------------------------
+  COI          2     1536   7.1%       1368       168         0
+  COII        15      740   9.7%        480       260       171
+  CytB        18     1158   0.8%        617       541       395
+  ND5         12     1747   0.8%        987       760       511
+
+========================================================================
+  5. CONCATENATED SUPERMATRIX (Step 5)
+========================================================================
+  Species in supermatrix : 22
+  Supermatrix length     : 5,181 bp
+  Partitions:
+    charset COI = 1-1536;
+    charset COII = 1537-2276;
+    charset CytB = 2277-3434;
+    charset ND5 = 3435-5181;
+
+========================================================================
+  6. PHYLOGENETIC ANALYSIS — IQ-TREE (Step 6)
+========================================================================
+  Best-fit model         : see IQ-TREE log
+  Bootstrap replicates   : 1000 (ultrafast)
+  Internal nodes         : 19
+  Bootstrap range        : 44 – 100
+  Mean bootstrap support : 73.5
+  Nodes ≥ 70%            : 9
+  Nodes ≥ 95%            : 7
+
+========================================================================
+  7. GENETIC DISTANCES (Step 7)
+========================================================================
+  Mean pairwise p-distance : 0.1351
+  Min  pairwise p-distance : 0.0000
+  Max  pairwise p-distance : 0.2257
+
+========================================================================
+  8. OUTPUT FILES
+========================================================================
+  figures/distance_heatmap.png
+  figures/tree_biopython.pdf
+  figures/tree_biopython.png
+  results/distance_matrix.csv
+  results/jc_distance_matrix.csv
+
+========================================================================
+END OF REPORT
+========================================================================

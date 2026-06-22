@@ -1,0 +1,96 @@
+BUTTERFLY PHYLOGENOMICS — EVOLUTIONARY SUMMARY
+Generated: 2026-06-22 16:17:31
+
+========================================================================
+  OVERVIEW
+========================================================================
+  This analysis reconstructed the phylogenetic relationships among
+  20 butterfly species spanning 5 families (Papilionidae, Pieridae,
+  Nymphalidae, Lycaenidae, Hesperiidae) using four mitochondrial
+  protein-coding genes: COI, COII, CytB, and ND5.
+
+========================================================================
+  SPECIES PAIRS — CLOSEST (lowest p-distance)
+========================================================================
+  0.0000  Ampittia dioscorides ↔ Arhopala japonica
+  0.0000  Ampittia dioscorides ↔ Danaus plexippus megalippe
+  0.0000  Ampittia dioscorides ↔ Delias pasithoe
+  0.0000  Ampittia dioscorides ↔ Eurema hecabe
+  0.0000  Ampittia dioscorides ↔ Papilio bianor
+
+========================================================================
+  SPECIES PAIRS — MOST DIVERGENT (highest p-distance)
+========================================================================
+  0.2257  Delias pasithoe ↔ Vanessa indica
+  0.2185  Danaus plexippus ↔ Delias pasithoe
+  0.2066  Delias pasithoe ↔ Melitaea cinxia
+  0.2011  Delias pasithoe ↔ Lerema accius
+  0.1988  Ampittia dioscorides ↔ Pieris rapae
+
+========================================================================
+  SUBSTITUTION MODEL
+========================================================================
+  Best-fit model selected by ModelFinder: see IQ-TREE log
+
+  GTR+F+I+G4 (if selected) indicates:
+    GTR — General Time-Reversible substitution matrix
+    +F  — empirical base frequencies
+    +I  — proportion of invariable sites
+    +G4 — gamma-distributed rate variation (4 categories)
+
+========================================================================
+  BOOTSTRAP SUPPORT SUMMARY
+========================================================================
+  Mean support       : 73.5%
+  Well-supported (≥70%): 9 / 19 nodes
+  Strongly supported (≥95%): 7 / 19 nodes
+
+  ⚠ Several nodes have low support — consider adding
+    more loci or reviewing data quality.
+
+========================================================================
+  NOTES ON DATA COMPLETENESS
+========================================================================
+  36 missing gene/species combinations:
+    Ampittia dioscorides — COI
+    Curetis bulis — COI
+    Danaus plexippus — COI
+    Delias pasithoe — COI
+    Eurema hecabe — COI
+    Gonepteryx rhamni — COI
+    Junonia almana — COI
+    Lycaena phlaeas — COI
+    Melitaea cinxia — COI
+    Papilio bianor — COI
+    Papilio glaucus — COI
+    Papilio machaon — COI
+    Papilio polytes — COI
+    Papilio xuthus — COI
+    Pieris napi — COI
+    Pieris rapae — COI
+    Vanessa cardui — COI
+    Vanessa indica — COI
+    Ampittia dioscorides — COII
+    Danaus plexippus — COII
+    Junonia almana — COII
+    Melitaea cinxia — COII
+    Papilio machaon — COII
+    Pieris napi — COII
+    Vanessa indica — COII
+    Ampittia dioscorides — CytB
+    Arhopala japonica — CytB
+    Pieris napi — CytB
+    Arhopala japonica — ND5
+    Delias pasithoe — ND5
+    Eurema hecabe — ND5
+    Papilio bianor — ND5
+    Papilio machaon — ND5
+    Papilio xuthus — ND5
+    Pieris napi — ND5
+    Vanessa indica — ND5
+
+  Missing data was filled with '?' in the supermatrix.
+
+========================================================================
+END OF EVOLUTIONARY SUMMARY
+========================================================================

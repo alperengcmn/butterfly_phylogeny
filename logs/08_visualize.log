@@ -1,0 +1,7 @@
+2026-06-22 16:17:28,124 [INFO] Using tree file: results/tree/butterfly.contree
+2026-06-22 16:17:28,124 [INFO] Drawing Biopython tree …
+2026-06-22 16:17:29,253 [INFO] Saved → figures/tree_biopython.png
+2026-06-22 16:17:30,301 [INFO] Saved → figures/tree_biopython.pdf
+2026-06-22 16:17:30,301 [INFO] Drawing ETE3 tree …
+2026-06-22 16:17:30,301 [WARNING] ETE3 not installed — skipping ETE3 figure. pip install ete3
+2026-06-22 16:17:30,301 [INFO] Step 8 complete.

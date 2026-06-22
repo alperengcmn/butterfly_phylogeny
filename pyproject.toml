@@ -1,0 +1,47 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.backends.legacy:build"
+
+[project]
+name = "butterfly-phylogenomics"
+version = "1.0.0"
+description = "Reproducible phylogenetic analysis of 20 butterfly species using mitochondrial genes"
+readme = "README.md"
+license = { text = "MIT" }
+requires-python = ">=3.11"
+authors = [
+  { name = "Alperen", email = "alperen8490@gmail.com" }
+]
+keywords = ["phylogenetics", "butterfly", "lepidoptera", "bioinformatics", "mitochondrial DNA"]
+classifiers = [
+  "Development Status :: 4 - Beta",
+  "Intended Audience :: Science/Research",
+  "Topic :: Scientific/Engineering :: Bio-Informatics",
+  "License :: OSI Approved :: MIT License",
+  "Programming Language :: Python :: 3.11",
+]
+dependencies = [
+  "biopython>=1.83",
+  "numpy>=1.26",
+  "pandas>=2.2",
+  "matplotlib>=3.8",
+  "seaborn>=0.13",
+  "scipy>=1.12",
+]
+
+[project.optional-dependencies]
+dev = ["pytest", "black", "ruff"]
+viz = ["ete3>=3.1.3"]
+
+[project.urls]
+Homepage = "https://github.com/alperen8490/butterfly-phylogeny"
+Repository = "https://github.com/alperen8490/butterfly-phylogeny"
+Issues = "https://github.com/alperen8490/butterfly-phylogeny/issues"
+
+[tool.ruff]
+line-length = 100
+target-version = "py311"
+
+[tool.black]
+line-length = 100
+target-version = ["py311"]

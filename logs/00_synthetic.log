@@ -1,0 +1,10 @@
+2026-06-22 13:03:20,844 [INFO] Gene COI root: 1542 bp
+2026-06-22 13:03:20,852 [INFO]   Written 20 seqs → data/raw/COI.fasta
+2026-06-22 13:03:20,853 [INFO] Gene COII root: 690 bp
+2026-06-22 13:03:20,858 [INFO]   Written 20 seqs → data/raw/COII.fasta
+2026-06-22 13:03:20,858 [INFO] Gene CytB root: 1140 bp
+2026-06-22 13:03:20,865 [INFO]   Written 20 seqs → data/raw/CytB.fasta
+2026-06-22 13:03:20,865 [INFO] Gene ND5 root: 1740 bp
+2026-06-22 13:03:20,876 [INFO]   Written 20 seqs → data/raw/ND5.fasta
+2026-06-22 13:03:20,877 [INFO] Metadata → data/raw/metadata.csv (80 rows)
+2026-06-22 13:03:20,878 [INFO] Step 0 (synthetic data) complete.
