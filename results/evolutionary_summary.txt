@@ -1,36 +1,37 @@
 BUTTERFLY PHYLOGENOMICS — EVOLUTIONARY SUMMARY
-Generated: 2026-06-22 16:17:31
+Generated: 2026-09-28 22:46:36
 
 ========================================================================
   OVERVIEW
 ========================================================================
   This analysis reconstructed the phylogenetic relationships among
-  20 butterfly species spanning 5 families (Papilionidae, Pieridae,
-  Nymphalidae, Lycaenidae, Hesperiidae) using four mitochondrial
-  protein-coding genes: COI, COII, CytB, and ND5.
+  26 taxa present in the supermatrix (from 26 targets)
+  across 5 families; Hesperiidae contributes 8 taxa
+  using four mitochondrial (COI, COII, CytB, ND5) and two nuclear
+  markers (EF1a and wingless), where available.
 
 ========================================================================
   SPECIES PAIRS — CLOSEST (lowest p-distance)
 ========================================================================
-  0.0000  Ampittia dioscorides ↔ Arhopala japonica
-  0.0000  Ampittia dioscorides ↔ Danaus plexippus megalippe
-  0.0000  Ampittia dioscorides ↔ Delias pasithoe
-  0.0000  Ampittia dioscorides ↔ Eurema hecabe
-  0.0000  Ampittia dioscorides ↔ Papilio bianor
+  0.0713  Pieris napi ↔ Pieris rapae
+  0.0899  Papilio machaon ↔ Papilio polytes
+  0.0936  Papilio glaucus ↔ Papilio machaon
+  0.0956  Papilio glaucus ↔ Papilio polytes
+  0.1025  Junonia almana ↔ Vanessa indica
 
 ========================================================================
   SPECIES PAIRS — MOST DIVERGENT (highest p-distance)
 ========================================================================
-  0.2257  Delias pasithoe ↔ Vanessa indica
-  0.2185  Danaus plexippus ↔ Delias pasithoe
-  0.2066  Delias pasithoe ↔ Melitaea cinxia
-  0.2011  Delias pasithoe ↔ Lerema accius
-  0.1988  Ampittia dioscorides ↔ Pieris rapae
+  0.2527  Papilio xuthus ↔ Pieris rapae
+  0.2492  Papilio xuthus ↔ Pieris napi
+  0.2456  Gonepteryx rhamni ↔ Papilio xuthus
+  0.2447  Eurema hecabe ↔ Papilio xuthus
+  0.2435  Danaus plexippus ↔ Papilio xuthus
 
 ========================================================================
   SUBSTITUTION MODEL
 ========================================================================
-  Best-fit model selected by ModelFinder: see IQ-TREE log
+  Best-fit model selected by ModelFinder: GTR+F+I+G4:COI,TIM+F+R3:COII,GTR+F+I+G4:CytB,GTR+F+I+R3:ND5,GTR+R3:EF1a,TPM2u+R3:wingless
 
   GTR+F+I+G4 (if selected) indicates:
     GTR — General Time-Reversible substitution matrix
@@ -41,55 +42,34 @@ Generated: 2026-06-22 16:17:31
 ========================================================================
   BOOTSTRAP SUPPORT SUMMARY
 ========================================================================
-  Mean support       : 73.5%
-  Well-supported (≥70%): 9 / 19 nodes
-  Strongly supported (≥95%): 7 / 19 nodes
+  Mean support       : 92.6%
+  Well-supported (≥70%): 22 / 23 nodes
+  Strongly supported (≥95%): 13 / 23 nodes
 
-  ⚠ Several nodes have low support — consider adding
-    more loci or reviewing data quality.
+  Most internal nodes have high bootstrap support under this dataset.
+  Bootstrap support is node-level resampling support; it is not the
+  probability that the complete tree is correct.
 
 ========================================================================
   NOTES ON DATA COMPLETENESS
 ========================================================================
-  36 missing gene/species combinations:
-    Ampittia dioscorides — COI
-    Curetis bulis — COI
-    Danaus plexippus — COI
-    Delias pasithoe — COI
-    Eurema hecabe — COI
-    Gonepteryx rhamni — COI
-    Junonia almana — COI
-    Lycaena phlaeas — COI
-    Melitaea cinxia — COI
-    Papilio bianor — COI
-    Papilio glaucus — COI
-    Papilio machaon — COI
-    Papilio polytes — COI
-    Papilio xuthus — COI
-    Pieris napi — COI
-    Pieris rapae — COI
-    Vanessa cardui — COI
-    Vanessa indica — COI
-    Ampittia dioscorides — COII
-    Danaus plexippus — COII
-    Junonia almana — COII
-    Melitaea cinxia — COII
-    Papilio machaon — COII
-    Pieris napi — COII
-    Vanessa indica — COII
-    Ampittia dioscorides — CytB
-    Arhopala japonica — CytB
-    Pieris napi — CytB
-    Arhopala japonica — ND5
-    Delias pasithoe — ND5
-    Eurema hecabe — ND5
-    Papilio bianor — ND5
-    Papilio machaon — ND5
-    Papilio xuthus — ND5
-    Pieris napi — ND5
-    Vanessa indica — ND5
+  All 26 species represented across all loci.
 
-  Missing data was filled with '?' in the supermatrix.
+========================================================================
+  MITOCHONDRIAL VS NUCLEAR COMPARISON
+========================================================================
+  MITOCHONDRIAL VS NUCLEAR PHYLOGENY COMPARISON
+  Mitochondrial taxa: 26
+  Nuclear taxa: 26
+  Shared taxa compared: 26
+  Mitochondrial internal splits: 23
+  Nuclear internal splits: 23
+  Shared splits: 4
+  Split similarity (shared splits / union): 9.5%
+  
+  Different supported topologies may indicate mitonuclear discordance. This comparison
+  is a screening result, not proof of introgression or heteroplasmy. Interpret node
+  support, marker coverage, and taxon sampling together.
 
 ========================================================================
 END OF EVOLUTIONARY SUMMARY

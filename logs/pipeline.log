@@ -1,0 +1,197 @@
+2026-09-28 22:37:15,603 [INFO] ════════════════════════════════════════════════════════════
+2026-09-28 22:37:15,605 [INFO]   BUTTERFLY PHYLOGENOMICS PIPELINE
+2026-09-28 22:37:15,608 [INFO]   2026-09-28 22:37:15
+2026-09-28 22:37:15,634 [INFO] ════════════════════════════════════════════════════════════
+2026-09-28 22:37:15,637 [INFO] Steps to run: [2, 3, 4, 5, 6, 7, 8, 9, 10, 11]
+2026-09-28 22:37:15,639 [INFO] 
+2026-09-28 22:37:15,644 [INFO] ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+2026-09-28 22:37:15,645 [INFO]   STEP 2: SEQUENCE QC & DEDUPLICATION
+2026-09-28 22:37:15,653 [INFO] ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+2026-09-28 22:37:16,257 [INFO] COI: 26 → 26 sequences kept (-0 short, -0 ambig, -0 dup)
+2026-09-28 22:37:16,260 [INFO] COII: 26 → 26 sequences kept (-0 short, -0 ambig, -0 dup)
+2026-09-28 22:37:16,265 [INFO] CytB: 26 → 26 sequences kept (-0 short, -0 ambig, -0 dup)
+2026-09-28 22:37:16,271 [INFO] ND5: 26 → 26 sequences kept (-0 short, -0 ambig, -0 dup)
+2026-09-28 22:37:16,277 [INFO] EF1a: 26 → 26 sequences kept (-0 short, -0 ambig, -0 dup)
+2026-09-28 22:37:16,280 [INFO] wingless: 26 → 26 sequences kept (-0 short, -0 ambig, -0 dup)
+2026-09-28 22:37:16,281 [INFO] QC stats written → data/cleaned/qc_stats.csv
+2026-09-28 22:37:16,282 [INFO] Step 2 complete. Total: 156 input → 156 output sequences (100.0% retained).
+2026-09-28 22:37:16,283 [INFO]   ✓ Step 2 completed in 0.6 s
+2026-09-28 22:37:16,283 [INFO] 
+2026-09-28 22:37:16,284 [INFO] ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+2026-09-28 22:37:16,285 [INFO]   STEP 3: MAFFT MULTIPLE SEQUENCE ALIGNMENT
+2026-09-28 22:37:16,285 [INFO] ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+2026-09-28 22:37:16,295 [INFO] MAFFT found: /opt/homebrew/bin/mafft
+2026-09-28 22:37:16,296 [INFO] Aligning COI (26 sequences) …
+2026-09-28 22:37:16,297 [INFO] Running: /opt/homebrew/bin/mafft --auto --adjustdirection --thread 1 --quiet data/cleaned/COI_cleaned.fasta
+2026-09-28 22:37:25,891 [INFO] Alignment written → data/aligned/COI_aligned.fasta
+2026-09-28 22:37:25,948 [INFO]   COI aligned: 26 seqs × 1564 bp, gap=1.97%, conserved=948, variable=616
+2026-09-28 22:37:25,950 [INFO] Aligning COII (26 sequences) …
+2026-09-28 22:37:25,950 [INFO] Running: /opt/homebrew/bin/mafft --auto --adjustdirection --thread 1 --quiet data/cleaned/COII_cleaned.fasta
+2026-09-28 22:37:28,365 [INFO] Alignment written → data/aligned/COII_aligned.fasta
+2026-09-28 22:37:28,398 [INFO]   COII aligned: 26 seqs × 885 bp, gap=22.52%, conserved=406, variable=479
+2026-09-28 22:37:28,399 [INFO] Aligning CytB (26 sequences) …
+2026-09-28 22:37:28,399 [INFO] Running: /opt/homebrew/bin/mafft --auto --adjustdirection --thread 1 --quiet data/cleaned/CytB_cleaned.fasta
+2026-09-28 22:37:33,914 [INFO] Alignment written → data/aligned/CytB_aligned.fasta
+2026-09-28 22:37:33,957 [INFO]   CytB aligned: 26 seqs × 1161 bp, gap=1.00%, conserved=584, variable=577
+2026-09-28 22:37:33,959 [INFO] Aligning ND5 (26 sequences) …
+2026-09-28 22:37:33,959 [INFO] Running: /opt/homebrew/bin/mafft --auto --adjustdirection --thread 1 --quiet data/cleaned/ND5_cleaned.fasta
+2026-09-28 22:37:46,380 [INFO] Alignment written → data/aligned/ND5_aligned.fasta
+2026-09-28 22:37:46,445 [INFO]   ND5 aligned: 26 seqs × 1750 bp, gap=0.79%, conserved=809, variable=941
+2026-09-28 22:37:46,447 [INFO] Aligning EF1a (26 sequences) …
+2026-09-28 22:37:46,448 [INFO] Running: /opt/homebrew/bin/mafft --auto --adjustdirection --thread 1 --quiet data/cleaned/EF1a_cleaned.fasta
+2026-09-28 22:37:55,134 [INFO] Alignment written → data/aligned/EF1a_aligned.fasta
+2026-09-28 22:37:55,212 [INFO]   EF1a aligned: 26 seqs × 2142 bp, gap=42.96%, conserved=1056, variable=1086
+2026-09-28 22:37:55,214 [INFO] Aligning wingless (26 sequences) …
+2026-09-28 22:37:55,214 [INFO] Running: /opt/homebrew/bin/mafft --auto --adjustdirection --thread 1 --quiet data/cleaned/wingless_cleaned.fasta
+2026-09-28 22:38:03,119 [INFO] Alignment written → data/aligned/wingless_aligned.fasta
+2026-09-28 22:38:03,242 [INFO]   wingless aligned: 26 seqs × 2163 bp, gap=68.59%, conserved=1134, variable=1029
+2026-09-28 22:38:03,246 [INFO] Alignment stats → data/aligned/alignment_stats.csv
+2026-09-28 22:38:03,247 [INFO] Step 3 complete.
+2026-09-28 22:38:03,248 [INFO]   ✓ Step 3 completed in 47.0 s
+2026-09-28 22:38:03,249 [INFO] 
+2026-09-28 22:38:03,251 [INFO] ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+2026-09-28 22:38:03,252 [INFO]   STEP 4: ALIGNMENT QUALITY CONTROL
+2026-09-28 22:38:03,253 [INFO] ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+2026-09-28 22:38:03,465 [INFO] COI: 26 seqs, 1512/1564 bp retained, gap=0.00%, conserved=911, variable=601, PI=486
+2026-09-28 22:38:03,542 [INFO] COII: 26 seqs, 614/885 bp retained, gap=0.00%, conserved=170, variable=444, PI=210
+2026-09-28 22:38:03,650 [INFO] CytB: 26 seqs, 1119/1161 bp retained, gap=0.00%, conserved=565, variable=554, PI=451
+2026-09-28 22:38:03,852 [INFO] ND5: 26 seqs, 1714/1750 bp retained, gap=0.00%, conserved=796, variable=918, PI=685
+2026-09-28 22:38:03,992 [INFO] EF1a: 26 seqs, 354/2142 bp retained, gap=0.00%, conserved=155, variable=199, PI=172
+2026-09-28 22:38:04,186 [INFO] wingless: 26 seqs, 338/2163 bp retained, gap=0.00%, conserved=70, variable=268, PI=221
+2026-09-28 22:38:04,190 [INFO] Per-gene QC → data/aligned/alignment_qc_per_gene.csv
+2026-09-28 22:38:04,195 [INFO] Per-sequence QC → data/aligned/alignment_qc_per_seq.csv
+2026-09-28 22:38:04,198 [INFO] Missing taxa report → data/aligned/missing_taxa_report.csv (0 missing taxon-marker pairs)
+2026-09-28 22:38:04,200 [INFO] All species represented in all gene alignments.
+2026-09-28 22:38:04,201 [INFO] Step 4 complete.
+2026-09-28 22:38:04,203 [INFO]   ✓ Step 4 completed in 0.9 s
+2026-09-28 22:38:04,204 [INFO] 
+2026-09-28 22:38:04,206 [INFO] ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+2026-09-28 22:38:04,207 [INFO]   STEP 5: SUPERMATRIX CONSTRUCTION
+2026-09-28 22:38:04,208 [INFO] ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+2026-09-28 22:38:04,212 [INFO] Loaded COI: 26 species, alignment length 1512 bp
+2026-09-28 22:38:04,215 [INFO] Loaded COII: 26 species, alignment length 614 bp
+2026-09-28 22:38:04,218 [INFO] Loaded CytB: 26 species, alignment length 1119 bp
+2026-09-28 22:38:04,223 [INFO] Loaded ND5: 26 species, alignment length 1714 bp
+2026-09-28 22:38:04,224 [INFO] Loaded EF1a: 26 species, alignment length 354 bp
+2026-09-28 22:38:04,226 [INFO] Loaded wingless: 26 species, alignment length 338 bp
+2026-09-28 22:38:04,227 [INFO] Total unique species across all genes: 26
+2026-09-28 22:38:04,234 [INFO] Supermatrix written → data/concatenated/supermatrix.fasta  (26 species × 5651 bp)
+2026-09-28 22:38:04,236 [INFO] Partitions written → data/concatenated/partitions.txt
+2026-09-28 22:38:04,238 [INFO] ─── Partition summary ───
+2026-09-28 22:38:04,240 [INFO]   COI         1 –  1512  (1512 bp)
+2026-09-28 22:38:04,242 [INFO]   COII     1513 –  2126  (614 bp)
+2026-09-28 22:38:04,252 [INFO]   CytB     2127 –  3245  (1119 bp)
+2026-09-28 22:38:04,257 [INFO]   ND5      3246 –  4959  (1714 bp)
+2026-09-28 22:38:04,259 [INFO]   EF1a     4960 –  5313  (354 bp)
+2026-09-28 22:38:04,263 [INFO]   wingless   5314 –  5651  (338 bp)
+2026-09-28 22:38:04,266 [INFO]   TOTAL                5651 bp
+2026-09-28 22:38:04,267 [INFO] Step 5 complete.
+2026-09-28 22:38:04,270 [INFO]   ✓ Step 5 completed in 0.1 s
+2026-09-28 22:38:04,272 [INFO] 
+2026-09-28 22:38:04,273 [INFO] ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+2026-09-28 22:38:04,274 [INFO]   STEP 6: IQ-TREE PHYLOGENETIC ANALYSIS
+2026-09-28 22:38:04,275 [INFO] ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+2026-09-28 22:38:04,279 [INFO] IQ-TREE found: /private/tmp/butterfly_phylo_iqtree/bin/iqtree3
+2026-09-28 22:38:04,281 [INFO] IQ-TREE command:
+  /private/tmp/butterfly_phylo_iqtree/bin/iqtree3 -s data/concatenated/supermatrix.fasta -p data/concatenated/partitions.txt -m MFP -B 1000 -T AUTO --prefix results/tree/butterfly --redo
+2026-09-28 22:39:16,520 [INFO] IQ-TREE finished successfully.
+2026-09-28 22:39:16,524 [INFO] Best-fit model: GTR+F+I+G4:COI,TIM+F+R3:COII,GTR+F+I+G4:CytB,GTR+F+I+R3:ND5,GTR+R3:EF1a,TPM2u+R3:wingless
+2026-09-28 22:39:16,541 [INFO] Bootstrap support — min: 53.0, max: 100.0, mean: 92.6 (n=23 nodes)
+2026-09-28 22:39:16,542 [INFO] Output files in: results/tree/
+2026-09-28 22:39:16,543 [INFO]   butterfly.best_model.nex
+2026-09-28 22:39:16,543 [INFO]   butterfly.best_scheme
+2026-09-28 22:39:16,544 [INFO]   butterfly.best_scheme.nex
+2026-09-28 22:39:16,544 [INFO]   butterfly.bionj
+2026-09-28 22:39:16,545 [INFO]   butterfly.ckp.gz
+2026-09-28 22:39:16,545 [INFO]   butterfly.contree
+2026-09-28 22:39:16,546 [INFO]   butterfly.iqtree
+2026-09-28 22:39:16,546 [INFO]   butterfly.log
+2026-09-28 22:39:16,547 [INFO]   butterfly.mldist
+2026-09-28 22:39:16,547 [INFO]   butterfly.model.gz
+2026-09-28 22:39:16,548 [INFO]   butterfly.splits.nex
+2026-09-28 22:39:16,548 [INFO]   butterfly.treefile
+2026-09-28 22:39:16,549 [INFO] Step 6 complete.
+2026-09-28 22:39:16,549 [INFO]   ✓ Step 6 completed in 72.3 s
+2026-09-28 22:39:16,550 [INFO] 
+2026-09-28 22:39:16,550 [INFO] ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+2026-09-28 22:39:16,551 [INFO]   STEP 7: PAIRWISE GENETIC DISTANCES
+2026-09-28 22:39:16,551 [INFO] ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+2026-09-28 22:39:16,721 [WARNING] /Users/alperen/.matplotlib is not a writable directory
+2026-09-28 22:39:16,723 [WARNING] Matplotlib created a temporary cache directory at /var/folders/l6/rxv218sj4h171llkzkh74pdr0000gn/T/matplotlib-arhknplx because there was an issue with the default path ({configdir}); it is highly recommended to set the MPLCONFIGDIR environment variable to a writable directory, in particular to speed up the import of Matplotlib and to better support multiprocessing.
+2026-09-28 22:40:33,399 [WARNING] Matplotlib is building the font cache; this may take a moment.
+2026-09-28 22:41:02,012 [INFO] Failed to extract font properties from /System/Library/PrivateFrameworks/FontServices.framework/Resources/Reserved/PingFangUI.ttc: FT_Open_Face (ft2font.cpp line 200) failed with error 0x02: unknown file format
+2026-09-28 22:41:02,039 [INFO] Failed to extract font properties from /System/Library/Fonts/Apple Color Emoji.ttc: Non-scalable fonts are not supported
+2026-09-28 22:41:02,045 [INFO] Failed to extract font properties from /System/Library/Fonts/Supplemental/NISC18030.ttf: Non-scalable fonts are not supported
+2026-09-28 22:41:02,129 [INFO] Failed to extract font properties from /System/Library/Fonts/LastResort.otf: tuple indices must be integers or slices, not str
+2026-09-28 22:41:02,215 [INFO] generated new fontManager
+2026-09-28 22:41:05,000 [INFO] Loading supermatrix …
+2026-09-28 22:41:05,003 [INFO] Computing pairwise p-distances for 26 species …
+2026-09-28 22:41:05,236 [INFO] Distance matrix → results/distance_matrix.csv
+2026-09-28 22:41:05,239 [INFO] JC distance matrix → results/jc_distance_matrix.csv
+2026-09-28 22:41:05,239 [INFO] ─── 5 closest pairs ───────────────────────────────
+2026-09-28 22:41:05,240 [INFO]   0.0713  Pieris napi ↔ Pieris rapae
+2026-09-28 22:41:05,240 [INFO]   0.0899  Papilio machaon ↔ Papilio polytes
+2026-09-28 22:41:05,241 [INFO]   0.0936  Papilio glaucus ↔ Papilio machaon
+2026-09-28 22:41:05,241 [INFO]   0.0956  Papilio glaucus ↔ Papilio polytes
+2026-09-28 22:41:05,242 [INFO]   0.1025  Junonia almana ↔ Vanessa indica
+2026-09-28 22:41:05,242 [INFO] ─── 5 most divergent pairs ─────────────────────────
+2026-09-28 22:41:05,243 [INFO]   0.2527  Papilio xuthus ↔ Pieris rapae
+2026-09-28 22:41:05,243 [INFO]   0.2492  Papilio xuthus ↔ Pieris napi
+2026-09-28 22:41:05,244 [INFO]   0.2456  Gonepteryx rhamni ↔ Papilio xuthus
+2026-09-28 22:41:05,244 [INFO]   0.2447  Eurema hecabe ↔ Papilio xuthus
+2026-09-28 22:41:05,245 [INFO]   0.2435  Danaus plexippus ↔ Papilio xuthus
+2026-09-28 22:41:06,464 [INFO] Heatmap saved → figures/distance_heatmap.png
+2026-09-28 22:41:06,465 [INFO] Step 7 complete.
+2026-09-28 22:41:06,466 [INFO]   ✓ Step 7 completed in 38.3 s
+2026-09-28 22:41:06,466 [INFO] 
+2026-09-28 22:41:06,467 [INFO] ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+2026-09-28 22:41:06,467 [INFO]   STEP 8: TREE VISUALISATION
+2026-09-28 22:41:06,468 [INFO] ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+2026-09-28 22:41:06,469 [INFO] Using tree file: results/tree/butterfly.contree
+2026-09-28 22:41:06,470 [INFO] Drawing Biopython tree …
+2026-09-28 22:41:07,333 [INFO] Saved → figures/tree_biopython.png
+2026-09-28 22:41:07,745 [INFO] Saved → figures/tree_biopython.pdf
+2026-09-28 22:41:07,746 [INFO] Drawing ETE3 tree …
+2026-09-28 22:41:07,746 [WARNING] ETE3 not installed — skipping ETE3 figure. pip install ete3
+2026-09-28 22:41:07,747 [INFO] Step 8 complete.
+2026-09-28 22:41:07,748 [INFO]   ✓ Step 8 completed in 1.3 s
+2026-09-28 22:41:07,748 [INFO] 
+2026-09-28 22:41:07,748 [INFO] ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+2026-09-28 22:41:07,749 [INFO]   STEP 9: MITOCHONDRIAL VS NUCLEAR TREES
+2026-09-28 22:41:07,750 [INFO] ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+2026-09-28 22:46:36,630 [INFO] Inheritance comparison written to results/inheritance/comparison.txt
+2026-09-28 22:46:36,632 [INFO]   ✓ Step 9 completed in 127.9 s
+2026-09-28 22:46:36,633 [INFO] 
+2026-09-28 22:46:36,634 [INFO] ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+2026-09-28 22:46:36,635 [INFO]   STEP 10: REPORT GENERATION
+2026-09-28 22:46:36,635 [INFO] ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+2026-09-28 22:46:36,641 [INFO] Building project_summary.txt …
+2026-09-28 22:46:36,730 [INFO] Written → results/project_summary.txt
+2026-09-28 22:46:36,731 [INFO] Building evolutionary_summary.txt …
+2026-09-28 22:46:36,748 [INFO] Written → results/evolutionary_summary.txt
+2026-09-28 22:46:36,749 [INFO] Report generation complete.
+2026-09-28 22:46:36,750 [INFO]   ✓ Step 10 completed in 0.1 s
+2026-09-28 22:46:36,751 [INFO] 
+2026-09-28 22:46:36,751 [INFO] ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+2026-09-28 22:46:36,752 [INFO]   STEP 11: SUMMARY FIGURE GENERATION
+2026-09-28 22:46:36,753 [INFO] ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+2026-09-28 22:46:39,124 [INFO] Saved → results/summary_figure.png
+2026-09-28 22:46:39,924 [INFO] Saved → results/summary_figure.pdf
+2026-09-28 22:46:39,925 [INFO] Summary figure generation complete.
+2026-09-28 22:46:39,926 [INFO]   ✓ Step 11 completed in 3.2 s
+2026-09-28 22:46:39,926 [INFO] 
+2026-09-28 22:46:39,927 [INFO] ════════════════════════════════════════════════════════════
+2026-09-28 22:46:39,928 [INFO]   PIPELINE SUMMARY  (total: 291.7 s)
+2026-09-28 22:46:39,929 [INFO] ════════════════════════════════════════════════════════════
+2026-09-28 22:46:39,929 [INFO]   ✓  Step 2: Sequence QC & deduplication
+2026-09-28 22:46:39,930 [INFO]   ✓  Step 3: MAFFT multiple sequence alignment
+2026-09-28 22:46:39,931 [INFO]   ✓  Step 4: Alignment quality control
+2026-09-28 22:46:39,931 [INFO]   ✓  Step 5: Supermatrix construction
+2026-09-28 22:46:39,932 [INFO]   ✓  Step 6: IQ-TREE phylogenetic analysis
+2026-09-28 22:46:39,933 [INFO]   ✓  Step 7: Pairwise genetic distances
+2026-09-28 22:46:39,933 [INFO]   ✓  Step 8: Tree visualisation
+2026-09-28 22:46:39,934 [INFO]   ✓  Step 9: Mitochondrial vs nuclear trees
+2026-09-28 22:46:39,935 [INFO]   ✓  Step 10: Report generation
+2026-09-28 22:46:39,936 [INFO]   ✓  Step 11: Summary figure generation
+2026-09-28 22:46:39,936 [INFO] 
+2026-09-28 22:46:39,937 [INFO] All steps completed successfully.

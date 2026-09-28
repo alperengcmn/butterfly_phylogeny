@@ -30,12 +30,16 @@ from pathlib import Path
 import numpy as np
 from Bio import AlignIO
 from Bio.Align import MultipleSeqAlignment
+from Bio.Seq import Seq
+from Bio.SeqRecord import SeqRecord
 
 # ─── Constants ────────────────────────────────────────────────────────────────
 
-GENES: list[str] = ["COI", "COII", "CytB", "ND5"]
+GENES: list[str] = ["COI", "COII", "CytB", "ND5", "EF1a", "wingless"]
 
 ALIGNED_DIR = Path("data/aligned")
+TRIMMED_DIR = ALIGNED_DIR / "trimmed"
+MIN_SITE_OCCUPANCY = {gene: 1.0 for gene in GENES}
 LOG_FILE    = Path("logs/04_qc.log")
 
 QC_PER_GENE = Path("data/aligned/alignment_qc_per_gene.csv")
@@ -45,11 +49,13 @@ QC_MISSING  = Path("data/aligned/missing_taxa_report.csv")
 ALL_SPECIES: set[str] = {
     "Papilio_machaon", "Papilio_xuthus", "Papilio_glaucus",
     "Papilio_polytes", "Papilio_bianor", "Pieris_rapae",
-    "Pieris_napi", "Gonepteryx_rhamni", "Delias_pasithoe",
+    "Pieris_napi", "Gonepteryx_rhamni", "Aporia_crataegi",
     "Eurema_hecabe", "Danaus_plexippus", "Vanessa_indica",
     "Vanessa_cardui", "Junonia_almana", "Melitaea_cinxia",
-    "Lycaena_phlaeas", "Arhopala_japonica", "Curetis_bulis",
-    "Ampittia_dioscorides", "Lerema_accius",
+    "Lycaena_phlaeas", "Plebejus_argus", "Curetis_bulis",
+    "Ampittia_dioscorides", "Ochlodes_venata", "Parnara_guttata",
+    "Heteropterus_morpheus", "Pyrgus_malvae",
+    "Celaenorrhinus_maculosus", "Ctenoptilum_vasava", "Notocrypta_curvifascia",
 }
 
 # ─── Logging ──────────────────────────────────────────────────────────────────
@@ -76,12 +82,12 @@ def seq_gc_content(seq: str) -> float:
 
 
 def seq_gap_fraction(seq: str) -> float:
-    return seq.count("-") / max(len(seq), 1)
+    return sum(char.upper() in "-?NX" for char in seq) / max(len(seq), 1)
 
 
 def extract_species(record_id: str) -> str:
     """Pull first token (species name) from IDs like 'Papilio_machaon|ACC|COI'."""
-    return record_id.split("|")[0]
+    return record_id.split("|")[0].removeprefix("_R_")
 
 
 # ─── Alignment-level metrics ──────────────────────────────────────────────────
@@ -114,6 +120,24 @@ def site_statistics(alignment: MultipleSeqAlignment) -> dict[str, int]:
     }
 
 
+def trim_to_site_occupancy(alignment: MultipleSeqAlignment, threshold: float) -> MultipleSeqAlignment:
+    """Keep homologous columns meeting the configured minimum taxon occupancy."""
+    n_taxa = len(alignment)
+    keep = [
+        i for i in range(alignment.get_alignment_length())
+        if sum(str(record.seq[i]).upper() not in "-?NX" for record in alignment) / n_taxa >= threshold
+    ]
+    if not keep:
+        raise ValueError(f"No alignment columns meet the {threshold:.0%} occupancy threshold")
+    return MultipleSeqAlignment([
+        SeqRecord(
+            Seq("".join(str(record.seq[i]) for i in keep)),
+            id=record.id, name=record.name, description=record.description,
+        )
+        for record in alignment
+    ])
+
+
 # ─── Per-gene QC ─────────────────────────────────────────────────────────────
 
 def qc_gene(gene: str) -> tuple[dict, list[dict], list[str]]:
@@ -128,6 +152,8 @@ def qc_gene(gene: str) -> tuple[dict, list[dict], list[str]]:
     aln_path = ALIGNED_DIR / f"{gene}_aligned.fasta"
     empty_gene = {
         "gene": gene, "n_sequences": 0, "alignment_length": 0,
+        "original_alignment_length": 0, "min_site_occupancy": 0,
+        "retained_site_fraction": 0,
         "overall_gap_fraction": "N/A", "mean_seq_gap_fraction": "N/A",
         "mean_gc_content": "N/A", "conserved_sites": "N/A",
         "variable_sites": "N/A", "parsimony_informative_sites": "N/A",
@@ -143,8 +169,13 @@ def qc_gene(gene: str) -> tuple[dict, list[dict], list[str]]:
         log.error("Cannot parse %s: %s", aln_path, exc)
         return empty_gene, [], list(ALL_SPECIES)
 
-    n_seq   = len(alignment)
-    aln_len = alignment.get_alignment_length()
+    n_seq = len(alignment)
+    original_length = alignment.get_alignment_length()
+    occupancy = MIN_SITE_OCCUPANCY[gene]
+    trimmed = trim_to_site_occupancy(alignment, occupancy)
+    TRIMMED_DIR.mkdir(parents=True, exist_ok=True)
+    AlignIO.write(trimmed, str(TRIMMED_DIR / f"{gene}_trimmed.fasta"), "fasta")
+    aln_len = trimmed.get_alignment_length()
 
     # Per-sequence metrics
     seq_rows: list[dict] = []
@@ -152,7 +183,7 @@ def qc_gene(gene: str) -> tuple[dict, list[dict], list[str]]:
     gc_contents: list[float] = []
     present_species: set[str] = set()
 
-    for rec in alignment:
+    for rec in trimmed:
         seq_str = str(rec.seq)
         gf  = seq_gap_fraction(seq_str)
         gc  = seq_gc_content(seq_str)
@@ -172,15 +203,18 @@ def qc_gene(gene: str) -> tuple[dict, list[dict], list[str]]:
 
     # Overall gap fraction
     all_chars   = n_seq * aln_len
-    total_gaps  = sum(str(r.seq).count("-") for r in alignment)
+    total_gaps  = sum(sum(char.upper() in "-?NX" for char in str(r.seq)) for r in trimmed)
     overall_gap = total_gaps / all_chars if all_chars > 0 else 0.0
 
-    site_stats = site_statistics(alignment)
+    site_stats = site_statistics(trimmed)
 
     gene_stats = {
         "gene":                        gene,
         "n_sequences":                 n_seq,
         "alignment_length":            aln_len,
+        "original_alignment_length":   original_length,
+        "min_site_occupancy":          occupancy,
+        "retained_site_fraction":      round(aln_len / original_length, 4),
         "overall_gap_fraction":        round(overall_gap, 4),
         "mean_seq_gap_fraction":       round(float(np.mean(gap_fracs)), 4),
         "mean_gc_content":             round(float(np.mean(gc_contents)), 4),
@@ -190,8 +224,8 @@ def qc_gene(gene: str) -> tuple[dict, list[dict], list[str]]:
     missing = sorted(ALL_SPECIES - present_species)
 
     log.info(
-        "%s: %d seqs, %d bp, gap=%.2f%%, conserved=%d, variable=%d, PI=%d",
-        gene, n_seq, aln_len,
+        "%s: %d seqs, %d/%d bp retained, gap=%.2f%%, conserved=%d, variable=%d, PI=%d",
+        gene, n_seq, aln_len, original_length,
         overall_gap * 100,
         site_stats["conserved_sites"],
         site_stats["variable_sites"],
@@ -235,14 +269,15 @@ def run() -> None:
             writer.writerows(all_seq_rows)
         log.info("Per-sequence QC → %s", QC_PER_SEQ)
 
-    # Write missing-taxa report
-    if missing_rows:
-        with open(QC_MISSING, "w", newline="") as fh:
-            writer = csv.DictWriter(fh, fieldnames=["gene", "missing_species"])
-            writer.writeheader()
-            writer.writerows(missing_rows)
-        log.info("Missing taxa report → %s", QC_MISSING)
-    else:
+    # Always overwrite the report, including a header-only zero-missing file,
+    # so a previous run's missing taxa can never survive as stale data.
+    with open(QC_MISSING, "w", newline="") as fh:
+        writer = csv.DictWriter(fh, fieldnames=["gene", "missing_species"])
+        writer.writeheader()
+        writer.writerows(missing_rows)
+    log.info("Missing taxa report → %s (%d missing taxon-marker pairs)",
+             QC_MISSING, len(missing_rows))
+    if not missing_rows:
         log.info("All species represented in all gene alignments.")
 
     log.info("Step 4 complete.")

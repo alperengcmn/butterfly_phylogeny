@@ -1,0 +1,217 @@
+IQ-TREE version 3.1.3 for MacOS ARM 64-bit built Jul 26 2026
+Developed by Bui Quang Minh, Thomas Wong, Nhan Ly-Trong, Huaiyan Ren
+Contributed by Lam-Tung Nguyen, Dominik Schrempf, Chris Bielow,
+Olga Chernomor, Michael Woodhams, Diep Thi Hoang, Heiko Schmidt
+
+Host:    Alperen-MacBook-Air.local (SSE4.2, 8 GB RAM)
+Command: /private/tmp/butterfly_phylo_iqtree/bin/iqtree3 -s results/inheritance/mitochondrial.fasta -p results/inheritance/mitochondrial.nex -m MFP -B 1000 -T AUTO --prefix results/inheritance/mitochondrial --redo
+Seed:    894395 (Using SPRNG - Scalable Parallel Random Number Generator)
+Time:    Mon Sep 28 22:41:07 2026
+Kernel:  SSE2 - auto-detect threads (8 CPU cores detected)
+
+Reading partition model file results/inheritance/mitochondrial.nex ...
+Partition file is in NEXUS format...
+Reading alignment file results/inheritance/mitochondrial.fasta ... Fasta format detected
+Reading fasta file: done in 0.00263882 secs using 80.72% CPU
+Alignment most likely contains DNA/RNA sequences
+Constructing alignment: done in 0.00537205 secs using 72.99% CPU
+Alignment has 26 sequences with 4959 columns, 2014 distinct patterns
+1832 parsimony-informative, 684 singleton sites, 2443 constant sites
+                          Gap/Ambiguity  Composition  p-value
+Analyzing sequences: done in 9.39369e-05 secs using 270.4% CPU
+   1  Ampittia_dioscorides        0.00%    passed     79.01%
+   2  Aporia_crataegi             0.00%    passed     88.27%
+   3  Celaenorrhinus_maculosus    0.00%    passed     63.89%
+   4  Ctenoptilum_vasava          0.00%    passed     66.45%
+   5  Curetis_bulis               0.00%    passed     41.62%
+   6  Danaus_plexippus            0.00%    passed     88.14%
+   7  Eurema_hecabe               0.00%    passed     91.43%
+   8  Gonepteryx_rhamni           0.00%    passed     78.27%
+   9  Heteropterus_morpheus       0.00%    passed     86.82%
+  10  Junonia_almana              0.00%    passed     96.94%
+  11  Lycaena_phlaeas             0.00%    failed      1.72%
+  12  Melitaea_cinxia             0.00%    passed     52.33%
+  13  Notocrypta_curvifascia      0.00%    passed     49.34%
+  14  Ochlodes_venata             0.00%    passed     17.67%
+  15  Papilio_bianor              0.00%    passed     91.16%
+  16  Papilio_glaucus             0.00%    passed     94.30%
+  17  Papilio_machaon             0.00%    passed     89.67%
+  18  Papilio_polytes             0.00%    passed     89.45%
+  19  Papilio_xuthus              0.02%    passed     34.76%
+  20  Parnara_guttata             0.00%    passed     64.71%
+  21  Pieris_napi                 0.00%    passed     50.83%
+  22  Pieris_rapae                0.00%    passed     17.39%
+  23  Plebejus_argus              0.00%    passed     12.54%
+  24  Pyrgus_malvae               0.00%    passed     29.89%
+  25  Vanessa_cardui              0.00%    passed     71.08%
+  26  Vanessa_indica              0.00%    passed     81.19%
+****  TOTAL                       0.00%  1 sequences failed composition chi2 test (p-value<5%; df=3)
+NOTE: No CharPartition defined, use all CharSets
+Loading 4 partitions...
+Subset	Type	Seqs	Sites	Infor	Invar	Model	Name
+1		26	1512	486	911	MFP	COI
+2		26	614	210	170	MFP	COII
+3		26	1119	451	566	MFP	CytB
+4		26	1714	685	796	MFP	ND5
+Degree of missing data: 0.000
+
+
+Create initial parsimony tree by phylogenetic likelihood library (PLL)... 0.007 seconds
+Measuring multi-threading efficiency up to 8 CPU cores
+Increase to 10 rounds for branch lengths
+67 trees examined
+Threads: 1 / Time: 8.064 sec / Speedup: 1.000 / Efficiency: 100% / LogL: -50325
+Threads: 2 / Time: 5.834 sec / Speedup: 1.382 / Efficiency: 69% / LogL: -50325
+Threads: 3 / Time: 5.752 sec / Speedup: 1.402 / Efficiency: 47% / LogL: -50325
+Determining AUTO threadcount: done in 19.6515 secs using 136.6% CPU
+BEST NUMBER OF THREADS: 2
+
+Perform fast likelihood tree search using GTR+I+G model...
+Estimate model parameters (epsilon = 5.000)
+Initial log-likelihood: -48324.689
+Current log-likelihood at step 1: -46139.225
+Current log-likelihood at step 2: -45952.891
+Current log-likelihood at step 3: -45945.488
+Current log-likelihood at step 4: -45940.651
+Parameters optimization took 3 rounds (0.646 sec)
+
+
+WARNING: Estimated model parameters are at boundary that can cause numerical instability!
+
+Perform nearest neighbor interchange...
+Estimate model parameters (epsilon = 1.000)
+Initial log-likelihood: -45922.475
+Current log-likelihood at step 1: -45917.774
+Current log-likelihood at step 2: -45913.380
+Current log-likelihood at step 3: -45908.734
+Current log-likelihood at step 4: -45903.988
+Current log-likelihood at step 5: -45899.866
+Current log-likelihood at step 6: -45896.972
+Current log-likelihood at step 7: -45895.147
+Current log-likelihood at step 8: -45893.984
+Current log-likelihood at step 9: -45893.203
+Partition-specific rates:  0.804 1.106 1.474 0.826
+Parameters optimization took 8 rounds (0.690 sec)
+
+
+WARNING: Estimated model parameters are at boundary that can cause numerical instability!
+
+Time for fast ML tree search: 1.490 seconds
+
+NOTE: ModelFinder requires 16 MB RAM!
+Selecting individual models for 4 charsets using BIC...
+ModelFinder will allocate partition-specific threads based on partition sizes
+Full partition model BIC score: 92441.993 (LnL: -45816.821  df:95)
+Partition information was printed to results/inheritance/mitochondrial.best_scheme.nex
+Partition information in Raxml format was printed to results/inheritance/mitochondrial.best_scheme
+
+All model information printed to results/inheritance/mitochondrial.model.gz
+CPU time for ModelFinder: 68.876 seconds (0h:1m:8s)
+Wall-clock time for ModelFinder: 45.903 seconds (0h:0m:45s)
+Generating 1000 samples for ultrafast bootstrap (seed: 894395)...
+
+NOTE: 14 MB RAM (0 GB) is required!
+Estimate model parameters (epsilon = 0.100)
+Initial log-likelihood: -45820.292
+Current log-likelihood at step 1: -45816.405
+Current log-likelihood at step 2: -45816.307
+Partition-specific rates:  0.845 1.024 1.456 0.830
+Parameters optimization took 1 rounds (0.153 sec)
+
+
+WARNING: Estimated model parameters are at boundary that can cause numerical instability!
+
+Wrote distance file to... 
+Computing ML distances based on estimated model parameters...
+Calculating distance matrix: done in 6.00815e-05 secs using 129.8% CPU
+Computing ML distances took 0.000207 sec (of wall-clock time) 0.000115 sec (of CPU time)
+Setting up auxiliary I and S matrices: done in 9.48906e-05 secs using 96.95% CPU
+Constructing RapidNJ tree: done in 0.00111914 secs using 42.8% CPU
+Computing RapidNJ tree took 0.001292 sec (of wall-clock time) 0.000607 sec (of CPU time)
+Log-likelihood of RapidNJ tree: -48634.864
+--------------------------------------------------------------------
+|             INITIALIZING CANDIDATE TREE SET                      |
+--------------------------------------------------------------------
+Generating 98 parsimony trees... 0.694 second
+Computing log-likelihood of 98 initial trees ... 1.071 seconds
+Current best score: -45816.307
+
+Do NNI search on 20 best initial trees
+Estimate model parameters (epsilon = 0.100)
+Initial log-likelihood: -45816.307
+Current log-likelihood at step 1: -45816.255
+Parameters optimization took 0 rounds (0.062 sec)
+
+
+WARNING: Estimated model parameters are at boundary that can cause numerical instability!
+
+BETTER TREE FOUND at iteration 1: -45816.255
+Iteration 10 / LogL: -45816.465 / Time: 0h:0m:50s
+Iteration 20 / LogL: -45817.046 / Time: 0h:0m:52s
+Finish initializing candidate tree set (3)
+Current best tree score: -45816.255 / CPU time: 6.427
+Number of iterations: 20
+--------------------------------------------------------------------
+|               OPTIMIZING CANDIDATE TREE SET                      |
+--------------------------------------------------------------------
+Iteration 30 / LogL: -45816.372 / Time: 0h:0m:54s (0h:0m:21s left)
+Iteration 40 / LogL: -45821.352 / Time: 0h:0m:56s (0h:0m:16s left)
+Iteration 50 / LogL: -45816.265 / Time: 0h:0m:58s (0h:0m:12s left)
+Log-likelihood cutoff on original alignment: -45882.807
+Iteration 60 / LogL: -45816.318 / Time: 0h:0m:59s (0h:0m:9s left)
+Iteration 70 / LogL: -45872.777 / Time: 0h:1m:1s (0h:0m:7s left)
+Iteration 80 / LogL: -45872.773 / Time: 0h:1m:3s (0h:0m:4s left)
+Iteration 90 / LogL: -45822.445 / Time: 0h:1m:5s (0h:0m:2s left)
+Iteration 100 / LogL: -45816.269 / Time: 0h:1m:7s (0h:0m:0s left)
+Log-likelihood cutoff on original alignment: -45856.121
+NOTE: Bootstrap correlation coefficient of split occurrence frequencies: 1.000
+TREE SEARCH COMPLETED AFTER 102 ITERATIONS / Time: 0h:1m:7s
+
+--------------------------------------------------------------------
+|                    FINALIZING TREE SEARCH                        |
+--------------------------------------------------------------------
+Performs final model parameters optimization
+Estimate model parameters (epsilon = 0.010)
+Initial log-likelihood: -45816.255
+Current log-likelihood at step 1: -45816.225
+Current log-likelihood at step 2: -45816.207
+Current log-likelihood at step 3: -45816.196
+Current log-likelihood at step 4: -45816.188
+Partition-specific rates:  0.838 1.017 1.471 0.829
+Parameters optimization took 3 rounds (0.239 sec)
+
+
+WARNING: Estimated model parameters are at boundary that can cause numerical instability!
+
+Partition information was printed to results/inheritance/mitochondrial.best_model.nex
+BEST SCORE FOUND : -45816.188
+Creating bootstrap support values...
+Split supports printed to NEXUS file results/inheritance/mitochondrial.splits.nex
+Total tree length: 3.626
+
+Total number of iterations: 102
+CPU time used for tree search: 31.494 sec (0h:0m:31s)
+Wall-clock time used for tree search: 21.644 sec (0h:0m:21s)
+Total CPU time used: 101.309 sec (0h:1m:41s)
+Total wall-clock time used: 68.173 sec (0h:1m:8s)
+
+Computing bootstrap consensus tree...
+Reading input file results/inheritance/mitochondrial.splits.nex...
+26 taxa and 98 splits.
+Consensus tree written to results/inheritance/mitochondrial.contree
+Reading input trees file results/inheritance/mitochondrial.contree
+Log-likelihood of consensus tree: -45816.188
+
+Analysis results written to: 
+  IQ-TREE report:                results/inheritance/mitochondrial.iqtree
+  Maximum-likelihood tree:       results/inheritance/mitochondrial.treefile
+  Likelihood distances:          results/inheritance/mitochondrial.mldist
+  Best partitioning scheme:      results/inheritance/mitochondrial.best_scheme.nex
+           in RAxML format:      results/inheritance/mitochondrial.best_scheme
+
+Ultrafast bootstrap approximation results written to:
+  Split support values:          results/inheritance/mitochondrial.splits.nex
+  Consensus tree:                results/inheritance/mitochondrial.contree
+  Screen log file:               results/inheritance/mitochondrial.log
+
+Date and Time: Mon Sep 28 22:42:16 2026

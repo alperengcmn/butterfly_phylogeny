@@ -2,13 +2,13 @@
 
 # 🦋 Butterfly Phylogenomics
 
-### End-to-end reproducible phylogenetic analysis of 20 butterfly species  
-### using four mitochondrial genes — COI · COII · CytB · ND5
+### Reproducible phylogenetic analysis of 26 target butterfly species
+### using four mitochondrial and two nuclear markers
 
-[![CI](https://github.com/alperen8490/butterfly-phylogeny/actions/workflows/ci.yml/badge.svg)](https://github.com/alperen8490/butterfly-phylogeny/actions)
+[![CI](https://github.com/alperengcmn/butterfly_phylogeny/actions/workflows/ci.yml/badge.svg)](https://github.com/alperengcmn/butterfly_phylogeny/actions)
 [![Python 3.11](https://img.shields.io/badge/python-3.11-blue.svg)](https://www.python.org/downloads/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
-[![IQ-TREE 2](https://img.shields.io/badge/IQ--TREE-2.x-orange.svg)](http://www.iqtree.org/)
+[![IQ-TREE](https://img.shields.io/badge/IQ--TREE-2%20%7C%203-orange.svg)](http://www.iqtree.org/)
 [![MAFFT](https://img.shields.io/badge/MAFFT-7.x-purple.svg)](https://mafft.cbrc.jp/alignment/software/)
 
 </div>
@@ -17,17 +17,17 @@
 
 ## ✨ Overview
 
-This project reconstructs the phylogenetic relationships of **20 butterfly species** across 5 families using a fully automated, reproducible bioinformatics pipeline. From raw NCBI accessions to publication-quality figures — every step is scripted, logged, and version-controlled.
+This project targets **26 butterfly species** across five families, using four mitochondrial genes and two nuclear markers. Separate mitochondrial and nuclear trees provide an independent screen for mitonuclear discordance.
 
 | Stat | Value |
 |------|-------|
-| 🦋 Species | 20 across 5 families |
-| 🧬 Genes | COI, COII, CytB, ND5 |
-| 📏 Supermatrix | 5,181 bp |
-| 🌲 Tree method | Maximum Likelihood (IQ-TREE 2) |
+| 🦋 Taxa | 26 targets; 26 in the current matrix (8 Hesperiidae) |
+| 🧬 Markers | COI, COII, CytB, ND5, EF1a, wingless |
+| 📏 Supermatrix | 5,651 bp after complete-case trimming |
+| 🌲 Tree method | Maximum Likelihood (IQ-TREE) |
 | 🔁 Bootstrap | 1,000 ultrafast replicates |
-| 📊 Best model | GTR+F · TIM2+F+I+G4 · GTR+F+I+G4 · TIM+F+G4 |
-| ✅ Mean BS support | 73.5% (7 nodes ≥ 95%) |
+| 📊 Best model | Selected per marker by IQ-TREE ModelFinder |
+| ✅ Mean BS support | 92.6% across 23 internal nodes |
 
 ---
 
@@ -44,7 +44,7 @@ This project reconstructs the phylogenetic relationships of **20 butterfly speci
 </tr>
 <tr>
   <td>🔵 <b>Pieridae</b></td>
-  <td><i>Pieris rapae · P. napi · Gonepteryx rhamni · Delias pasithoe · Eurema hecabe</i></td>
+  <td><i>Pieris rapae · P. napi · Gonepteryx rhamni · Aporia crataegi · Eurema hecabe</i></td>
 </tr>
 <tr>
   <td>🟢 <b>Nymphalidae</b></td>
@@ -52,11 +52,11 @@ This project reconstructs the phylogenetic relationships of **20 butterfly speci
 </tr>
 <tr>
   <td>🟠 <b>Lycaenidae</b></td>
-  <td><i>Lycaena phlaeas · Arhopala japonica · Curetis bulis</i></td>
+  <td><i>Lycaena phlaeas · Plebejus argus · Curetis bulis</i></td>
 </tr>
 <tr>
   <td>🟣 <b>Hesperiidae</b></td>
-  <td><i>Ampittia dioscorides · Lerema accius</i></td>
+  <td><i>Ampittia dioscorides · Ochlodes venata · Parnara guttata · Heteropterus morpheus · Pyrgus malvae · Celaenorrhinus maculosus · Ctenoptilum vasava · Notocrypta curvifascia</i></td>
 </tr>
 </table>
 
@@ -70,7 +70,8 @@ butterfly_phylogeny/
 ├── 📂 data/
 │   ├── raw/                # NCBI GenBank sequences + metadata.csv
 │   ├── cleaned/            # QC-filtered FASTA + qc_stats.csv
-│   ├── aligned/            # MAFFT alignments + alignment QC reports
+│   ├── aligned/            # MAFFT alignments + QC reports
+│   │   └── trimmed/        # 100%-occupancy per-locus FASTA files used downstream
 │   └── concatenated/       # supermatrix.fasta + partitions.txt
 │
 ├── 📂 scripts/
@@ -85,6 +86,7 @@ butterfly_phylogeny/
 │   ├── 08_visualize_tree.py           ← PNG/PDF tree figures
 │   ├── 09_generate_report.py          ← Automated text reports
 │   ├── 10_summary_figure.py           ← 4-panel publication figure
+│   ├── 11_compare_inheritance.py       ← mtDNA/nuclear comparison
 │   └── run_pipeline.py                ← Master orchestrator
 │
 ├── 📂 results/
@@ -92,8 +94,8 @@ butterfly_phylogeny/
 │   ├── distance_matrix.csv
 │   ├── jc_distance_matrix.csv
 │   ├── summary_figure.png  ← 4-panel summary (tree + heatmap + stats)
+│   ├── inheritance/        # Separate mtDNA/nuclear trees and comparison
 │   ├── summary_figure.pdf
-│   ├── bulgular.txt        ← Full findings & thesis section (Turkish)
 │   ├── project_summary.txt
 │   └── evolutionary_summary.txt
 │
@@ -109,6 +111,7 @@ butterfly_phylogeny/
 ├── pyproject.toml          # Python packaging metadata
 ├── CITATION.cff            # How to cite this project
 ├── run_all.command         # macOS double-click runner
+├── bulgular.txt            # Current findings (Turkish)
 └── README.md
 ```
 
@@ -120,8 +123,8 @@ butterfly_phylogeny/
 
 ```bash
 # 1 — Clone the repository
-git clone https://github.com/alperen8490/butterfly-phylogeny.git
-cd butterfly-phylogeny/butterfly_phylogeny
+git clone https://github.com/alperengcmn/butterfly_phylogeny.git
+cd butterfly_phylogeny
 
 # 2 — Create conda environment (installs MAFFT + IQ-TREE automatically)
 conda env create -f environment.yml
@@ -129,7 +132,7 @@ conda activate butterfly_phylogeny
 
 # 3 — Verify tools
 mafft --version
-iqtree2 --version
+iqtree --version  # or iqtree2, depending on the installed release
 python -c "import Bio; print('Biopython', Bio.__version__)"
 ```
 
@@ -160,7 +163,7 @@ pip install -r requirements.txt
 Double-click:  run_all.command
 ```
 
-Terminal opens automatically, installs missing tools, and runs all 9 steps.
+Terminal opens automatically, installs missing tools, and runs all 11 steps.
 
 ### Option B — Full pipeline via Python
 
@@ -183,12 +186,11 @@ python scripts/05_concatenate.py
 # Step 6: IQ-TREE ML phylogeny
 python scripts/06_run_iqtree.py
 
-# Steps 7–9: Distances → Figures → Reports
+# Steps 7–11: Distances → Trees → Reports → Figures
 python scripts/07_genetic_distances.py
 python scripts/08_visualize_tree.py
+python scripts/11_compare_inheritance.py
 python scripts/09_generate_report.py
-
-# Step 10: 4-panel summary figure
 python scripts/10_summary_figure.py
 ```
 
@@ -199,7 +201,7 @@ python scripts/10_summary_figure.py
 python scripts/run_pipeline.py --email your@email.com --start-step 3
 
 # Run only reporting steps
-python scripts/run_pipeline.py --email your@email.com --steps 9 10
+python scripts/run_pipeline.py --email your@email.com --steps 9 10 11
 ```
 
 ---
@@ -214,11 +216,12 @@ python scripts/run_pipeline.py --email your@email.com --steps 9 10
 | 3 | `03_align_sequences.py` | **MAFFT 7.x** | `data/aligned/*_aligned.fasta` |
 | 4 | `04_alignment_qc.py` | NumPy | Alignment QC CSVs |
 | 5 | `05_concatenate.py` | Biopython | `supermatrix.fasta`, `partitions.txt` |
-| 6 | `06_run_iqtree.py` | **IQ-TREE 2** | ML tree, bootstrap, best model |
+| 6 | `06_run_iqtree.py` | **IQ-TREE** | ML tree, bootstrap, best model |
 | 7 | `07_genetic_distances.py` | NumPy/Pandas | `distance_matrix.csv`, heatmap |
 | 8 | `08_visualize_tree.py` | Biopython Phylo / ETE3 | `tree_*.png/pdf` |
-| 9 | `09_generate_report.py` | Pandas | Summary & evolutionary reports |
-| 10 | `10_summary_figure.py` | Matplotlib | `summary_figure.png/pdf` |
+| 9 | `11_compare_inheritance.py` | IQ-TREE / Biopython | Separate mitochondrial and nuclear trees + split comparison |
+| 10 | `09_generate_report.py` | Pandas | Summary & evolutionary reports |
+| 11 | `10_summary_figure.py` | Matplotlib | `summary_figure.png/pdf` |
 
 ---
 
@@ -226,32 +229,28 @@ python scripts/run_pipeline.py --email your@email.com --steps 9 10
 
 ### Phylogenetic Tree
 
-The ML tree was inferred from a **5,181 bp supermatrix** with per-partition model selection:
+The current run contains all 26 target taxa and 5,651 positions across six markers. Each locus was trimmed to columns present in all 26 taxa (100% site occupancy), so the concatenated matrix has no missing taxa or gap characters. This strict complete-case rule avoids gaps caused by partial overlap, while discarding 16.5–30.6% of some locus alignments. The exact matrix and model results are recorded in `results/project_summary.txt` and `results/tree/butterfly.iqtree`.
 
-| Gene | Model | Rationale |
-|------|-------|-----------|
-| COI | GTR+F | General reversible, empirical frequencies |
-| COII | TIM2+F+I+G4 | Invariable sites + Gamma rate variation |
-| CytB | GTR+F+I+G4 | Full GTR with rate heterogeneity |
-| ND5 | TIM+F+G4 | Transition-specific rates + Gamma |
+IQ-TREE ModelFinder Plus selects a model separately for each of COI, COII, CytB, ND5, EF1a, and wingless during the run.
 
 ### Genetic Distances
 
 | Metric | Value |
 |--------|-------|
-| Mean pairwise p-distance | **13.5%** |
-| Closest pair | *Papilio machaon* ↔ *P. xuthus* — **6.45%** |
-| Most divergent pair | *Delias pasithoe* ↔ *Vanessa indica* — **22.6%** |
+| Mean pairwise p-distance | 0.1600 |
+| Lowest pairwise p-distance | 0.0713 — *Pieris napi* / *P. rapae* |
+| Highest pairwise p-distance | 0.2527 — *Papilio xuthus* / *Pieris rapae* |
 
 ### Bootstrap Support
 
-```
-≥ 95%  ████████████████████  7 nodes   (36.8%)
-70–94% ████████              2 nodes   (10.5%)
-50–69% ████████████████████████████████  8 nodes (42.1%)
-< 50%  ████████              2 nodes   (10.5%)
-                             Mean: 73.5%
-```
+| Statistic | Current result |
+|-----------|----------------|
+| Ultrafast replicates | 1,000 |
+| Mean support | 92.6% across 23 internal nodes |
+| Nodes with support ≥70% | 22 / 23 |
+| Nodes with support ≥95% | 13 / 23 |
+
+All 26 taxa have sequences for all six markers; the missing taxon/marker report is empty. Per-locus complete-case lengths are COI 1,512 bp, COII 614 bp, CytB 1,119 bp, ND5 1,714 bp, EF1a 354 bp, and wingless 338 bp. Separate mitochondrial and nuclear trees share 4 of 42 distinct internal splits (9.5% split similarity); this is a screening comparison and does not establish introgression or heteroplasmy. IQ-TREE composition/model assumptions and the limited nuclear sequence retained after trimming remain relevant when interpreting support. See [the current findings](bulgular.txt) for details.
 
 ---
 
@@ -265,11 +264,14 @@ The ML tree was inferred from a **5,181 bp supermatrix** with per-partition mode
 | `results/distance_matrix.csv` | N×N p-distance matrix |
 | `results/jc_distance_matrix.csv` | Jukes-Cantor corrected distances |
 | `results/summary_figure.png` | 4-panel publication figure |
-| `results/bulgular.txt` | Full findings & thesis section |
 | `results/project_summary.txt` | Pipeline-wide statistics |
 | `results/evolutionary_summary.txt` | Biological interpretation |
+| `results/inheritance/comparison.txt` | Mitochondrial/nuclear split comparison |
+| `results/inheritance/mitochondrial.treefile` | Mitochondrial-marker ML tree |
+| `results/inheritance/nuclear.treefile` | Nuclear-marker ML tree |
 | `figures/tree_biopython.png` | Standalone tree (PNG) |
 | `figures/distance_heatmap.png` | Distance heatmap |
+| `bulgular.txt` | Updated Turkish findings and limitations |
 
 ---
 
@@ -289,7 +291,7 @@ The ML tree was inferred from a **5,181 bp supermatrix** with per-partition mode
 | `mafft: command not found` | `conda install -c bioconda mafft` |
 | `iqtree2: command not found` | `conda install -c bioconda iqtree` |
 | Few sequences from NCBI | Try `--max-records 10` in Step 1 |
-| Low COI coverage | Lower min-length threshold in `02_clean_sequences.py` to 658 bp |
+| Low COI coverage | COI now retains sequences ≥658 bp; check `qc_stats.csv` for retained counts |
 | ETE3 import error | `pip install ete3` (optional; PNG/PDF work without it) |
 | `brewsci/bio` untrusted | `brew trust brewsci/bio && brew install brewsci/bio/iqtree` |
 
@@ -304,7 +306,7 @@ If you use this pipeline, please cite:
   title  = {Butterfly Phylogenomics Pipeline},
   author = {Alperen},
   year   = {2026},
-  url    = {https://github.com/alperen8490/butterfly-phylogeny}
+  url    = {https://github.com/alperengcmn/butterfly_phylogeny}
 }
 ```
 

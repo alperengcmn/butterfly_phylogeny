@@ -1,11 +1,11 @@
 BUTTERFLY PHYLOGENOMICS PROJECT — SUMMARY REPORT
-Generated: 2026-06-22 16:17:31
+Generated: 2026-09-28 22:46:36
 
 
 ========================================================================
   1. SPECIES
 ========================================================================
-  Total target species: 20
+  Total target species: 26
     · Papilio machaon
     · Papilio xuthus
     · Papilio glaucus
@@ -14,7 +14,7 @@ Generated: 2026-06-22 16:17:31
     · Pieris rapae
     · Pieris napi
     · Gonepteryx rhamni
-    · Delias pasithoe
+    · Aporia crataegi
     · Eurema hecabe
     · Danaus plexippus
     · Vanessa indica
@@ -22,66 +22,80 @@ Generated: 2026-06-22 16:17:31
     · Junonia almana
     · Melitaea cinxia
     · Lycaena phlaeas
-    · Arhopala japonica
+    · Plebejus argus
     · Curetis bulis
     · Ampittia dioscorides
-    · Lerema accius
+    · Ochlodes venata
+    · Parnara guttata
+    · Heteropterus morpheus
+    · Pyrgus malvae
+    · Celaenorrhinus maculosus
+    · Ctenoptilum vasava
+    · Notocrypta curvifascia
 
 ========================================================================
   2. DATA COLLECTION (Step 1)
 ========================================================================
-  Total sequences downloaded : 76
-    COI   : 20 sequences
-    COII  : 17 sequences
-    CytB  : 19 sequences
-    ND5   : 20 sequences
+  Total sequences downloaded : 156
+    COI   : 26 sequences
+    COII  : 26 sequences
+    CytB  : 26 sequences
+    EF1a  : 26 sequences
+    ND5   : 26 sequences
+    wingless: 26 sequences
 
 ========================================================================
   3. SEQUENCE QUALITY CONTROL (Step 2)
 ========================================================================
-  COI   : 20 in → 2 out  (-18 short, -0 ambig, -0 dup)
-  COII  : 17 in → 15 out  (-2 short, -0 ambig, -0 dup)
-  CytB  : 19 in → 18 out  (-1 short, -0 ambig, -0 dup)
-  ND5   : 20 in → 12 out  (-8 short, -0 ambig, -0 dup)
+  COI   : 26 in → 26 out  (-0 short, -0 ambig, -0 dup)
+  COII  : 26 in → 26 out  (-0 short, -0 ambig, -0 dup)
+  CytB  : 26 in → 26 out  (-0 short, -0 ambig, -0 dup)
+  ND5   : 26 in → 26 out  (-0 short, -0 ambig, -0 dup)
+  EF1a  : 26 in → 26 out  (-0 short, -0 ambig, -0 dup)
+  wingless: 26 in → 26 out  (-0 short, -0 ambig, -0 dup)
 
 ========================================================================
   4. MULTIPLE SEQUENCE ALIGNMENT (Steps 3–4)
 ========================================================================
   Gene      Seqs   Length   Gap%  Conserved  Variable  PI sites
   -------------------------------------------------------------
-  COI          2     1536   7.1%       1368       168         0
-  COII        15      740   9.7%        480       260       171
-  CytB        18     1158   0.8%        617       541       395
-  ND5         12     1747   0.8%        987       760       511
+  COI         26     1512   0.0%        911       601       486
+  COII        26      614   0.0%        170       444       210
+  CytB        26     1119   0.0%        565       554       451
+  ND5         26     1714   0.0%        796       918       685
+  EF1a        26      354   0.0%        155       199       172
+  wingless    26      338   0.0%         70       268       221
 
 ========================================================================
   5. CONCATENATED SUPERMATRIX (Step 5)
 ========================================================================
-  Species in supermatrix : 22
-  Supermatrix length     : 5,181 bp
+  Species in supermatrix : 26
+  Supermatrix length     : 5,651 bp
   Partitions:
-    charset COI = 1-1536;
-    charset COII = 1537-2276;
-    charset CytB = 2277-3434;
-    charset ND5 = 3435-5181;
+    charset COI = 1-1512;
+    charset COII = 1513-2126;
+    charset CytB = 2127-3245;
+    charset ND5 = 3246-4959;
+    charset EF1a = 4960-5313;
+    charset wingless = 5314-5651;
 
 ========================================================================
   6. PHYLOGENETIC ANALYSIS — IQ-TREE (Step 6)
 ========================================================================
-  Best-fit model         : see IQ-TREE log
+  Best-fit model         : GTR+F+I+G4:COI,TIM+F+R3:COII,GTR+F+I+G4:CytB,GTR+F+I+R3:ND5,GTR+R3:EF1a,TPM2u+R3:wingless
   Bootstrap replicates   : 1000 (ultrafast)
-  Internal nodes         : 19
-  Bootstrap range        : 44 – 100
-  Mean bootstrap support : 73.5
-  Nodes ≥ 70%            : 9
-  Nodes ≥ 95%            : 7
+  Internal nodes         : 23
+  Bootstrap range        : 53 – 100
+  Mean bootstrap support : 92.6
+  Nodes ≥ 70%            : 22
+  Nodes ≥ 95%            : 13
 
 ========================================================================
   7. GENETIC DISTANCES (Step 7)
 ========================================================================
-  Mean pairwise p-distance : 0.1351
-  Min  pairwise p-distance : 0.0000
-  Max  pairwise p-distance : 0.2257
+  Mean pairwise p-distance : 0.1600
+  Min  pairwise p-distance : 0.0713
+  Max  pairwise p-distance : 0.2527
 
 ========================================================================
   8. OUTPUT FILES
@@ -90,7 +104,14 @@ Generated: 2026-06-22 16:17:31
   figures/tree_biopython.pdf
   figures/tree_biopython.png
   results/distance_matrix.csv
+  results/evolutionary_summary.txt
   results/jc_distance_matrix.csv
+  results/project_summary.txt
+  results/summary_figure.pdf
+  results/summary_figure.png
+  results/inheritance/comparison.txt
+  results/inheritance/mitochondrial.treefile
+  results/inheritance/nuclear.treefile
 
 ========================================================================
 END OF REPORT

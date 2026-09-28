@@ -3,8 +3,8 @@ message: "If you use this pipeline, please cite it as below."
 type: software
 title: "Butterfly Phylogenomics Pipeline"
 abstract: >
-  A fully reproducible end-to-end phylogenetic analysis pipeline for 20 butterfly
-  species using four mitochondrial protein-coding genes (COI, COII, CytB, ND5).
+  A reproducible end-to-end phylogenetic analysis pipeline targeting 26 butterfly species
+  using four mitochondrial and two nuclear protein-coding markers.
   Includes automated NCBI data collection, MAFFT alignment, IQ-TREE ML phylogeny,
   genetic distance analysis, and publication-quality visualisation.
 authors:
@@ -14,7 +14,7 @@ authors:
 version: 1.0.0
 date-released: "2026-06-22"
 license: MIT
-repository-code: "https://github.com/alperen8490/butterfly-phylogeny"
+repository-code: "https://github.com/alperengcmn/butterfly_phylogeny"
 keywords:
   - phylogenetics
   - lepidoptera

@@ -1,0 +1,12 @@
+MITOCHONDRIAL VS NUCLEAR PHYLOGENY COMPARISON
+Mitochondrial taxa: 26
+Nuclear taxa: 26
+Shared taxa compared: 26
+Mitochondrial internal splits: 23
+Nuclear internal splits: 23
+Shared splits: 4
+Split similarity (shared splits / union): 9.5%
+
+Different supported topologies may indicate mitonuclear discordance. This comparison
+is a screening result, not proof of introgression or heteroplasmy. Interpret node
+support, marker coverage, and taxon sampling together.

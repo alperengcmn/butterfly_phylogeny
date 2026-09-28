@@ -143,7 +143,7 @@ def plot_heatmap(matrix: np.ndarray, labels: list[str], out_path: Path) -> None:
     )
 
     ax.set_title(
-        "Pairwise Genetic Distances — Butterfly Mitochondrial Supermatrix",
+        "Pairwise Genetic Distances — Mitochondrial and Nuclear Supermatrix",
         fontsize=13,
         fontweight="bold",
         pad=14,

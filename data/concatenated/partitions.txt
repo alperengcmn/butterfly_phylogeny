@@ -1,7 +1,9 @@
 #nexus
 begin sets;
-  charset COI = 1-1536;
-  charset COII = 1537-2276;
-  charset CytB = 2277-3434;
-  charset ND5 = 3435-5181;
+  charset COI = 1-1512;
+  charset COII = 1513-2126;
+  charset CytB = 2127-3245;
+  charset ND5 = 3246-4959;
+  charset EF1a = 4960-5313;
+  charset wingless = 5314-5651;
 end;

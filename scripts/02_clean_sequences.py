@@ -23,6 +23,7 @@ import logging
 import re
 import sys
 from collections import defaultdict
+from functools import lru_cache
 from pathlib import Path
 from typing import Iterator
 
@@ -31,14 +32,17 @@ from Bio.SeqRecord import SeqRecord
 
 # ─── Constants ────────────────────────────────────────────────────────────────
 
-GENES: list[str] = ["COI", "COII", "CytB", "ND5"]
+GENES: list[str] = ["COI", "COII", "CytB", "ND5", "EF1a", "wingless"]
 
 # Minimum accepted sequence length per gene (bp)
 MIN_LEN: dict[str, int] = {
-    "COI":  1000,
+    # Preserve the standard barcode-length threshold recommended for this dataset.
+    "COI":  658,
     "COII": 600,
     "CytB": 900,
     "ND5":  1000,
+    "EF1a": 500,
+    "wingless": 200,
 }
 
 # Maximum tolerated ambiguous nucleotide fraction (N or ?)
@@ -48,6 +52,20 @@ RAW_DIR     = Path("data/raw")
 CLEAN_DIR   = Path("data/cleaned")
 QC_FILE     = Path("data/cleaned/qc_stats.csv")
 LOG_FILE    = Path("logs/02_clean.log")
+METADATA_FILE = Path("data/raw/metadata.csv")
+
+
+@lru_cache(maxsize=1)
+def _metadata_taxa_by_accession() -> dict[str, str]:
+    """Map fetched accessions to the canonical query species in metadata.csv."""
+    if not METADATA_FILE.exists():
+        return {}
+    with METADATA_FILE.open(newline="", encoding="utf-8") as handle:
+        return {
+            row["accession"]: row["species"].replace(" ", "_")
+            for row in csv.DictReader(handle)
+            if row.get("accession") and row.get("species")
+        }
 
 # Canonical species names → normalised form
 SPECIES_NORM: dict[str, str] = {
@@ -59,7 +77,7 @@ SPECIES_NORM: dict[str, str] = {
     "pieris_rapae":          "Pieris_rapae",
     "pieris_napi":           "Pieris_napi",
     "gonepteryx_rhamni":     "Gonepteryx_rhamni",
-    "delias_pasithoe":       "Delias_pasithoe",
+    "aporia_crataegi":       "Aporia_crataegi",
     "eurema_hecabe":         "Eurema_hecabe",
     "danaus_plexippus":      "Danaus_plexippus",
     "vanessa_indica":        "Vanessa_indica",
@@ -67,10 +85,16 @@ SPECIES_NORM: dict[str, str] = {
     "junonia_almana":        "Junonia_almana",
     "melitaea_cinxia":       "Melitaea_cinxia",
     "lycaena_phlaeas":       "Lycaena_phlaeas",
-    "arhopala_japonica":     "Arhopala_japonica",
+    "plebejus_argus":        "Plebejus_argus",
     "curetis_bulis":         "Curetis_bulis",
     "ampittia_dioscorides":  "Ampittia_dioscorides",
-    "lerema_accius":         "Lerema_accius",
+    "ochlodes_venata":       "Ochlodes_venata",
+    "parnara_guttata":       "Parnara_guttata",
+    "heteropterus_morpheus": "Heteropterus_morpheus",
+    "pyrgus_malvae":         "Pyrgus_malvae",
+    "celaenorrhinus_maculosus": "Celaenorrhinus_maculosus",
+    "ctenoptilum_vasava":    "Ctenoptilum_vasava",
+    "notocrypta_curvifascia":"Notocrypta_curvifascia",
 }
 
 # ─── Logging ──────────────────────────────────────────────────────────────────
@@ -106,6 +130,10 @@ def _normalise_species(header_id: str) -> str:
     Falls back gracefully if the format differs.
     """
     parts = header_id.split("|")
+    if len(parts) > 1:
+        canonical = _metadata_taxa_by_accession().get(parts[1])
+        if canonical:
+            return canonical
     raw_name = parts[0] if parts else header_id
     key = raw_name.lower().replace(" ", "_")
     return SPECIES_NORM.get(key, raw_name)
@@ -143,7 +171,9 @@ def clean_gene(gene: str) -> dict:
         return stats
 
     min_len       = MIN_LEN.get(gene, 500)
-    seen_hashes:  set[str] = set()
+    # Identical haplotypes in different species are valid observations; only
+    # remove duplicate accessions within the same taxon.
+    seen_hashes:  set[tuple[str, str]] = set()
     kept_records: list[SeqRecord] = []
 
     for rec in iter_fasta(in_path):
@@ -164,15 +194,16 @@ def clean_gene(gene: str) -> dict:
             continue
 
         # 3 — Duplicate filter
+        species_norm = _normalise_species(rec.id)
         h = _seq_hash(seq_str)
-        if h in seen_hashes:
+        duplicate_key = (species_norm, h)
+        if duplicate_key in seen_hashes:
             log.debug("  REMOVED (duplicate): %s", rec.id)
             stats["removed_dup"] += 1
             continue
-        seen_hashes.add(h)
+        seen_hashes.add(duplicate_key)
 
         # 4 — Normalise ID
-        species_norm = _normalise_species(rec.id)
         parts = rec.id.split("|")
         acc   = parts[1] if len(parts) > 1 else rec.id
         rec.id          = f"{species_norm}|{acc}|{gene}"

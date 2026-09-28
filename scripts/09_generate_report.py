@@ -41,18 +41,20 @@ ALIGN_QC_PER_GENE   = Path("data/aligned/alignment_qc_per_gene.csv")
 SUPERMATRIX         = Path("data/concatenated/supermatrix.fasta")
 PARTITIONS          = Path("data/concatenated/partitions.txt")
 DIST_MATRIX_CSV     = RESULTS_DIR / "distance_matrix.csv"
-IQTREE_LOG          = Path("results/tree/butterfly.log")
+IQTREE_LOG          = Path("results/tree/butterfly.iqtree")
 TREEFILE            = Path("results/tree/butterfly.contree")
 TREEFILE_ML         = Path("results/tree/butterfly.treefile")
 
 SPECIES: list[str] = [
     "Papilio machaon", "Papilio xuthus", "Papilio glaucus",
     "Papilio polytes", "Papilio bianor", "Pieris rapae",
-    "Pieris napi", "Gonepteryx rhamni", "Delias pasithoe",
+    "Pieris napi", "Gonepteryx rhamni", "Aporia crataegi",
     "Eurema hecabe", "Danaus plexippus", "Vanessa indica",
     "Vanessa cardui", "Junonia almana", "Melitaea cinxia",
-    "Lycaena phlaeas", "Arhopala japonica", "Curetis bulis",
-    "Ampittia dioscorides", "Lerema accius",
+    "Lycaena phlaeas", "Plebejus argus", "Curetis bulis",
+    "Ampittia dioscorides", "Ochlodes venata", "Parnara guttata",
+    "Heteropterus morpheus", "Pyrgus malvae",
+    "Celaenorrhinus maculosus", "Ctenoptilum vasava", "Notocrypta curvifascia",
 ]
 
 # ─── Logging ──────────────────────────────────────────────────────────────────
@@ -81,8 +83,8 @@ def parse_best_model(log_path: Path) -> str:
     if not log_path.exists():
         return "N/A"
     text = log_path.read_text(errors="replace")
-    m = re.search(r"Best-fit model:\s+(\S+)", text)
-    return m.group(1) if m else "see IQ-TREE log"
+    m = re.search(r"Best-fit model(?: according to BIC)?:\s*(.+)", text)
+    return m.group(1).strip() if m else "see IQ-TREE log"
 
 
 def load_treefile() -> Path | None:
@@ -250,6 +252,11 @@ def build_project_summary() -> str:
     for path in sorted(RESULTS_DIR.glob("*")) if RESULTS_DIR.exists() else []:
         if path.is_file():
             lines.append(f"  results/{path.name}")
+    inheritance_dir = RESULTS_DIR / "inheritance"
+    if inheritance_dir.exists():
+        for path in sorted(inheritance_dir.iterdir()):
+            if path.is_file() and path.suffix in {".txt", ".treefile"}:
+                lines.append(f"  results/inheritance/{path.name}")
 
     lines.append("")
     lines.append(DIVIDER)
@@ -271,11 +278,19 @@ def build_evolutionary_summary() -> str:
     lines.append("BUTTERFLY PHYLOGENOMICS — EVOLUTIONARY SUMMARY")
     lines.append(f"Generated: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}")
 
+    matrix_taxa = [r.id for r in SeqIO.parse(str(SUPERMATRIX), "fasta")] if SUPERMATRIX.exists() else []
+    hesperiidae = {
+        "Ampittia_dioscorides", "Ochlodes_venata", "Parnara_guttata",
+        "Heteropterus_morpheus", "Pyrgus_malvae", "Celaenorrhinus_maculosus",
+        "Ctenoptilum_vasava", "Notocrypta_curvifascia",
+    }
+
     section("OVERVIEW")
     lines.append("  This analysis reconstructed the phylogenetic relationships among")
-    lines.append("  20 butterfly species spanning 5 families (Papilionidae, Pieridae,")
-    lines.append("  Nymphalidae, Lycaenidae, Hesperiidae) using four mitochondrial")
-    lines.append("  protein-coding genes: COI, COII, CytB, and ND5.")
+    lines.append(f"  {len(matrix_taxa)} taxa present in the supermatrix (from {len(SPECIES)} targets)")
+    lines.append(f"  across 5 families; Hesperiidae contributes {len(set(matrix_taxa) & hesperiidae)} taxa")
+    lines.append("  using four mitochondrial (COI, COII, CytB, ND5) and two nuclear")
+    lines.append("  markers (EF1a and wingless), where available.")
 
     section("SPECIES PAIRS — CLOSEST (lowest p-distance)")
     dist = species_pair_summary(DIST_MATRIX_CSV)
@@ -316,11 +331,13 @@ def build_evolutionary_summary() -> str:
             lines.append(f"  Strongly supported (≥95%): {bs['n_above_95']} / {bs['n_nodes']} nodes")
             if bs["mean"] >= 85:
                 lines.append("")
-                lines.append("  ✓ Tree topology is well-supported overall.")
+                lines.append("  Most internal nodes have high bootstrap support under this dataset.")
             else:
                 lines.append("")
                 lines.append("  ⚠ Several nodes have low support — consider adding")
                 lines.append("    more loci or reviewing data quality.")
+            lines.append("  Bootstrap support is node-level resampling support; it is not the")
+            lines.append("  probability that the complete tree is correct.")
     else:
         lines.append("  Phylogenetic analysis results not yet available.")
 
@@ -329,7 +346,7 @@ def build_evolutionary_summary() -> str:
     if missing_csv.exists():
         df_missing = pd.read_csv(str(missing_csv))
         if df_missing.empty:
-            lines.append("  All 20 species represented across all 4 genes.")
+            lines.append(f"  All {len(SPECIES)} species represented across all loci.")
         else:
             lines.append(f"  {len(df_missing)} missing gene/species combinations:")
             for _, row in df_missing.iterrows():
@@ -338,6 +355,24 @@ def build_evolutionary_summary() -> str:
             lines.append("  Missing data was filled with '?' in the supermatrix.")
     else:
         lines.append("  Missing taxa report not available.")
+
+    if ALIGN_QC_PER_GENE.exists():
+        alignment_qc = pd.read_csv(str(ALIGN_QC_PER_GENE))
+        high_gap = alignment_qc[
+            pd.to_numeric(alignment_qc["overall_gap_fraction"], errors="coerce") >= 0.20
+        ]
+        if not high_gap.empty:
+            lines.append("")
+            lines.append("  High-gap alignments requiring cautious interpretation:")
+            for _, row in high_gap.iterrows():
+                lines.append(
+                    f"    {row['gene']}: {float(row['overall_gap_fraction']) * 100:.1f}% gaps"
+                )
+
+    comparison = Path("results/inheritance/comparison.txt")
+    if comparison.exists():
+        section("MITOCHONDRIAL VS NUCLEAR COMPARISON")
+        lines.extend("  " + line for line in comparison.read_text(encoding="utf-8").splitlines())
 
     lines.append("")
     lines.append(DIVIDER)
@@ -363,7 +398,7 @@ def run() -> None:
     EVO_SUMMARY.write_text(evo, encoding="utf-8")
     log.info("Written → %s", EVO_SUMMARY)
 
-    log.info("Step 9 complete.")
+    log.info("Report generation complete.")
 
 
 if __name__ == "__main__":

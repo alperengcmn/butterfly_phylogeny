@@ -2,7 +2,7 @@
 """
 06_run_iqtree.py
 ----------------
-Run IQ-TREE 2 on the concatenated supermatrix to infer a maximum-likelihood
+  Run IQ-TREE on the concatenated supermatrix to infer a maximum-likelihood
 phylogenetic tree with partition-aware model selection and ultrafast bootstraps.
 
 IQ-TREE options used:
@@ -14,7 +14,7 @@ IQ-TREE options used:
   --prefix results/tree/butterfly
   --redo                  (overwrite previous run if present)
 
-Requires IQ-TREE 2 on PATH.
+Requires IQ-TREE on PATH.
   macOS M1/M2: conda install -c bioconda iqtree
 
 Usage:
@@ -59,8 +59,8 @@ log = logging.getLogger(__name__)
 # ─── Helpers ──────────────────────────────────────────────────────────────────
 
 def check_iqtree() -> str | None:
-    """Find IQ-TREE executable; prefer 'iqtree2' then 'iqtree'. Returns None if not found."""
-    for name in ("iqtree2", "iqtree"):
+    """Find IQ-TREE executable; prefer IQ-TREE 3, then 2, then generic alias."""
+    for name in ("iqtree3", "iqtree2", "iqtree"):
         path = shutil.which(name)
         if path:
             log.info("IQ-TREE found: %s", path)
@@ -74,10 +74,10 @@ def parse_best_model(log_path: Path) -> str:
     if not log_path.exists():
         return "unknown"
     text = log_path.read_text(encoding="utf-8", errors="replace")
-    # Pattern for partition model: "Best-fit model: GTR+F+I+G4 chosen…"
-    match = re.search(r"Best-fit model:\s+(\S+)", text)
+    # IQ-TREE 2 and 3 use slightly different summary labels.
+    match = re.search(r"Best-fit model(?: according to BIC)?:\s*(.+)", text)
     if match:
-        return match.group(1)
+        return match.group(1).strip()
     return "see log"
 
 
@@ -200,7 +200,7 @@ def run() -> None:
     run_iqtree(iqtree_bin)
 
     # Post-run summary
-    iqtree_log  = Path(str(PREFIX) + ".log")
+    iqtree_log  = Path(str(PREFIX) + ".iqtree")
     treefile    = Path(str(PREFIX) + ".treefile")
     iqtree_best = Path(str(PREFIX) + ".best_model.nex")
 

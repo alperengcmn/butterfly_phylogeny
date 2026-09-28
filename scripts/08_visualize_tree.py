@@ -107,7 +107,7 @@ def draw_biopython_tree(tree_path: Path) -> None:
     # Style tweaks
     ax.set_title(
         "Maximum-Likelihood Phylogenetic Tree of 20 Butterfly Species\n"
-        "Mitochondrial Supermatrix (COI + COII + CytB + ND5)",
+        "Six-locus Supermatrix (mtDNA + nuclear markers)",
         fontsize=12, fontweight="bold", pad=12,
     )
     ax.set_xlabel("Substitutions per site", fontsize=10)

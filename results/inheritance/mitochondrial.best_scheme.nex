@@ -1,0 +1,12 @@
+#nexus
+begin sets;
+  charset COI = 1-1512;
+  charset COII = 1513-2126;
+  charset CytB = 2127-3245;
+  charset ND5 = 3246-4959;
+  charpartition mymodels =
+    GTR+F+I+G4: COI,
+    TIM+F+R3: COII,
+    GTR+F+I+G4: CytB,
+    GTR+F+I+R3: ND5;
+end;

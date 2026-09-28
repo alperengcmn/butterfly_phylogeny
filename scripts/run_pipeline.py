@@ -3,7 +3,7 @@
 run_pipeline.py
 ---------------
 Master orchestrator for the Butterfly Phylogenomics pipeline.
-Runs all 9 steps in order with logging, timing, and graceful error handling.
+Runs all 11 steps in order with logging, timing, and graceful error handling.
 
 Usage:
     python scripts/run_pipeline.py --email your@email.com
@@ -38,7 +38,9 @@ PIPELINE_STEPS: list[tuple[int, str, str]] = [
     (6, "06_run_iqtree",        "IQ-TREE phylogenetic analysis"),
     (7, "07_genetic_distances", "Pairwise genetic distances"),
     (8, "08_visualize_tree",    "Tree visualisation"),
-    (9, "09_generate_report",   "Report generation"),
+    (9, "11_compare_inheritance", "Mitochondrial vs nuclear trees"),
+    (10, "09_generate_report",   "Report generation"),
+    (11, "10_summary_figure",    "Summary figure generation"),
 ]
 
 # ─── Logging ──────────────────────────────────────────────────────────────────
@@ -49,7 +51,7 @@ logging.basicConfig(
     format="%(asctime)s [%(levelname)s] %(message)s",
     handlers=[
         logging.StreamHandler(sys.stdout),
-        logging.FileHandler(LOG_FILE, mode="a"),
+        logging.FileHandler(LOG_FILE, mode="w"),
     ],
 )
 log = logging.getLogger(__name__)
@@ -108,15 +110,15 @@ Examples:
   # Start from step 3 (alignment)
   python scripts/run_pipeline.py --email you@example.com --start-step 3
 
-  # Run only steps 7, 8, 9
-  python scripts/run_pipeline.py --email you@example.com --steps 7 8 9
+  # Run only the final comparison, report, and figure steps
+  python scripts/run_pipeline.py --email you@example.com --steps 9 10 11
 
   # Stop on first failure (default: continue)
   python scripts/run_pipeline.py --email you@example.com --stop-on-error
 """,
     )
     parser.add_argument("--email",        required=True, help="E-mail for NCBI Entrez.")
-    parser.add_argument("--start-step",   type=int, default=1,  help="Start from step N (1–9).")
+    parser.add_argument("--start-step",   type=int, default=1,  help="Start from step N (1–11).")
     parser.add_argument("--steps",        type=int, nargs="+",  help="Run only these step numbers.")
     parser.add_argument("--stop-on-error",action="store_true",  help="Abort pipeline on first failure.")
     return parser.parse_args()

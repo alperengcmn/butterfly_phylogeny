@@ -28,7 +28,7 @@ import matplotlib.patches as mpatches
 import numpy as np
 import pandas as pd
 import seaborn as sns
-from Bio import Phylo
+from Bio import Phylo, SeqIO
 
 # ─── Constants ────────────────────────────────────────────────────────────────
 RESULTS_DIR  = Path("results")
@@ -36,6 +36,7 @@ FIGURES_DIR  = Path("figures")
 TREE_PREFIX  = Path("results/tree/butterfly")
 DIST_CSV     = RESULTS_DIR / "distance_matrix.csv"
 ALIGN_QC_CSV = Path("data/aligned/alignment_qc_per_gene.csv")
+SUPERMATRIX = Path("data/concatenated/supermatrix.fasta")
 
 LOG_FILE = Path("logs/10_summary.log")
 
@@ -43,17 +44,23 @@ FAMILY_COLORS = {
     "Papilio":      "#E63946",
     "Pieris":       "#457B9D",
     "Gonepteryx":   "#457B9D",
-    "Delias":       "#457B9D",
+    "Aporia":       "#457B9D",
     "Eurema":       "#457B9D",
     "Danaus":       "#2A9D8F",
     "Vanessa":      "#2A9D8F",
     "Junonia":      "#2A9D8F",
     "Melitaea":     "#2A9D8F",
     "Lycaena":      "#F4A261",
-    "Arhopala":     "#F4A261",
+    "Plebejus":     "#F4A261",
     "Curetis":      "#F4A261",
     "Ampittia":     "#8338EC",
-    "Lerema":       "#8338EC",
+    "Ochlodes":     "#8338EC",
+    "Parnara":      "#8338EC",
+    "Heteropterus": "#8338EC",
+    "Pyrgus":       "#8338EC",
+    "Celaenorrhinus": "#8338EC",
+    "Ctenoptilum":  "#8338EC",
+    "Notocrypta":   "#8338EC",
 }
 
 logging.basicConfig(level=logging.INFO, format="%(asctime)s [%(levelname)s] %(message)s",
@@ -130,12 +137,13 @@ def draw_heatmap_panel(ax: plt.Axes) -> None:
     n = len(labels)
 
     mask = np.eye(n, dtype=bool)
+    vmax = max(0.25, min(float(np.nanmax(matrix)), 0.5))
     sns.heatmap(
         matrix, mask=mask,
         xticklabels=labels, yticklabels=labels,
         cmap="YlOrRd", ax=ax,
         annot=False,
-        vmin=0, vmax=0.25,
+        vmin=0, vmax=vmax,
         linewidths=0.3, linecolor="white",
         cbar_kws={"label": "p-distance", "shrink": 0.7},
     )
@@ -174,9 +182,20 @@ def draw_stats_panel(ax_top: plt.Axes, ax_bot: plt.Axes) -> None:
 
     # ── Bootstrap distribution bar chart ────────────────────────────────────
     bins = ["<50", "50-69", "70-94", "≥95"]
-    # From actual IQ-TREE run: range 44–100, mean 73.5, ≥70: 9, ≥95: 7, total: 19
-    # <50: ~2 nodes, 50-69: ~8 nodes, 70-94: 2, ≥95: 7
-    counts = [2, 8, 2, 7]
+    treefile = Path(str(TREE_PREFIX) + ".contree")
+    if not treefile.exists():
+        treefile = Path(str(TREE_PREFIX) + ".treefile")
+    support = []
+    if treefile.exists():
+        tree = Phylo.read(str(treefile), "newick")
+        support = [float(c.confidence) for c in tree.find_clades()
+                   if c.confidence is not None]
+    counts = [
+        sum(v < 50 for v in support),
+        sum(50 <= v < 70 for v in support),
+        sum(70 <= v < 95 for v in support),
+        sum(v >= 95 for v in support),
+    ]
     colors = ["#F44336", "#FF9800", "#8BC34A", "#2196F3"]
     bars = ax_bot.bar(bins, counts, color=colors, alpha=0.9, edgecolor="white", linewidth=1.2)
     for bar, count in zip(bars, counts):
@@ -184,15 +203,17 @@ def draw_stats_panel(ax_top: plt.Axes, ax_bot: plt.Axes) -> None:
                     str(count), ha="center", va="bottom", fontsize=9, fontweight="bold")
     ax_bot.set_ylabel("Number of nodes", fontsize=8)
     ax_bot.set_xlabel("Ultrafast Bootstrap (%)", fontsize=8)
-    ax_bot.set_title("D   Bootstrap Support Distribution (n=19 nodes)",
+    ax_bot.set_title(f"D   Bootstrap Support Distribution (n={len(support)} nodes)",
                       fontweight="bold", fontsize=10, loc="left", pad=6)
     ax_bot.tick_params(labelsize=8)
-    ax_bot.set_ylim(0, max(counts) + 2)
+    ax_bot.set_ylim(0, max(counts, default=0) + 2)
     ax_bot.grid(axis="y", alpha=0.3, linestyle="--")
 
     # Annotation
     ax_bot.axhline(0, color="black", linewidth=0.5)
-    ax_bot.text(0.97, 0.95, "Mean BS = 73.5%", transform=ax_bot.transAxes,
+    mean_support = float(np.mean(support)) if support else float("nan")
+    summary = f"Mean BS = {mean_support:.1f}%" if support else "Bootstrap support unavailable"
+    ax_bot.text(0.97, 0.95, summary, transform=ax_bot.transAxes,
                 ha="right", va="top", fontsize=8,
                 bbox=dict(boxstyle="round,pad=0.3", facecolor="#E3F2FD", alpha=0.8))
 
@@ -221,8 +242,9 @@ def run() -> None:
     draw_heatmap_panel(ax_heat)
     draw_stats_panel(ax_aln, ax_bs)
 
+    n_taxa = sum(1 for _ in SeqIO.parse(str(SUPERMATRIX), "fasta")) if SUPERMATRIX.exists() else 0
     fig.suptitle(
-        "Phylogenomics of 20 Butterfly Species — Mitochondrial Supermatrix (COI + COII + CytB + ND5, 5,181 bp)",
+        f"Phylogenomics of {n_taxa} Butterfly Taxa — Mitochondrial and Nuclear Markers",
         fontsize=13, fontweight="bold", y=0.975,
     )
 
@@ -232,7 +254,7 @@ def run() -> None:
         log.info("Saved → %s", out)
 
     plt.close(fig)
-    log.info("Step 10 complete.")
+    log.info("Summary figure generation complete.")
 
 
 if __name__ == "__main__":

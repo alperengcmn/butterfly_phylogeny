@@ -5,7 +5,7 @@
 Concatenate aligned gene FASTA files into a supermatrix for phylogenetic analysis.
 
 Workflow:
-  1. Read aligned FASTA for each gene (COI, COII, CytB, ND5).
+  1. Read aligned FASTA for each mitochondrial and nuclear marker.
   2. Map sequences by species name.
   3. Fill gaps for species missing in a gene with an all-'?' placeholder.
   4. Write the concatenated supermatrix FASTA → data/concatenated/supermatrix.fasta
@@ -28,9 +28,9 @@ from Bio.SeqRecord import SeqRecord
 
 # ─── Constants ────────────────────────────────────────────────────────────────
 
-GENES: list[str] = ["COI", "COII", "CytB", "ND5"]
+GENES: list[str] = ["COI", "COII", "CytB", "ND5", "EF1a", "wingless"]
 
-ALIGNED_DIR = Path("data/aligned")
+ALIGNED_DIR = Path("data/aligned/trimmed")
 CONCAT_DIR  = Path("data/concatenated")
 
 SUPERMATRIX_FILE = CONCAT_DIR / "supermatrix.fasta"
@@ -54,7 +54,7 @@ log = logging.getLogger(__name__)
 
 def extract_species(record_id: str) -> str:
     """Extract species component from ID 'Species_name|ACC|Gene'."""
-    return record_id.split("|")[0]
+    return record_id.split("|")[0].removeprefix("_R_")
 
 
 def load_gene_alignment(gene: str) -> dict[str, str]:
@@ -62,7 +62,7 @@ def load_gene_alignment(gene: str) -> dict[str, str]:
     Load an aligned FASTA and return {species: sequence_str}.
     If multiple sequences exist per species, keeps the first.
     """
-    aln_path = ALIGNED_DIR / f"{gene}_aligned.fasta"
+    aln_path = ALIGNED_DIR / f"{gene}_trimmed.fasta"
     species_seqs: dict[str, str] = {}
 
     if not aln_path.exists():

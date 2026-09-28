@@ -1,12 +1,16 @@
 #nexus
 begin sets;
-  charset COI = 1-1536;
-  charset COII = 1537-2276;
-  charset CytB = 2277-3434;
-  charset ND5 = 3435-5181;
+  charset COI = 1-1512;
+  charset COII = 1513-2126;
+  charset CytB = 2127-3245;
+  charset ND5 = 3246-4959;
+  charset EF1a = 4960-5313;
+  charset wingless = 5314-5651;
   charpartition mymodels =
-    GTR+F: COI,
-    TIM2+F+I+G4: COII,
+    GTR+F+I+G4: COI,
+    TIM+F+R3: COII,
     GTR+F+I+G4: CytB,
-    TIM+F+G4: ND5;
+    GTR+F+I+R3: ND5,
+    GTR+R3: EF1a,
+    TPM2u+R3: wingless;
 end;

@@ -1,344 +1,104 @@
-════════════════════════════════════════════════════════════════════════════════
-  KELEBEKLERİN MİTOKONDRİYAL GEN ANALİZİ — BULGULAR VE TARTIŞMA
-  Butterfly Phylogenomics Project
-  Analiz Tarihi: 22 Haziran 2026
-════════════════════════════════════════════════════════════════════════════════
+KELEBEKLERİN ÇOKLU LOKUS FİLOGENETİK ANALİZİ — GÜNCEL BULGULAR
+Butterfly Phylogenomics Project
+Analiz tarihi: 28 Eylül 2026
 
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-1. ÇALIŞMANIN AMACI VE KAPSAMI
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+1. KAPSAM VE ÖRNEKLEME
 
-Bu çalışmada 5 farklı kelebek familyasına ait 20 tür, mitokondriyal genomun dört
-protein-kodlayan geninden (COI, COII, CytB, ND5) elde edilen diziler kullanılarak
-filogenetik açıdan incelenmiştir. Analizde kullanılan türler şunlardır:
+Analiz beş familyadan 26 hedef türü kapsar. Dört mitokondriyal (COI, COII,
+CytB, ND5) ve iki nükleer (EF1a, wingless) belirteç kullanıldı. Hesperiidae
+örneklemi sekiz türe genişletildi; tüm hedef türler altı belirtecin her
+birinde mevcut ve birleşik matrise dahil edildi.
 
-  Familya Papilionidae (5 tür):
-    · Papilio machaon  (Eski Dünya kırlangıç kelebeği)
-    · Papilio xuthus   (Asya kırlangıç kelebeği)
-    · Papilio glaucus  (Sarı kırlangıç kelebeği)
-    · Papilio polytes  (Ortak Çokbiçimli Kelebek)
-    · Papilio bianor   (Yeşil Bant Kırlangıç Kelebeği)
+2. DİZİ TOPLAMA VE KALİTE KONTROLÜ
 
-  Familya Pieridae (5 tür):
-    · Pieris rapae     (Küçük Beyaz Kelebek)
-    · Pieris napi      (Yeşil Damarlı Beyaz)
-    · Gonepteryx rhamni (Limon Kelebeği)
-    · Delias pasithoe  (Kırmızı Bazlı Yeis Kelebeği)
-    · Eurema hecabe    (Ortak Grassarı)
+NCBI/GenBank koleksiyonunda 26 türün her biri için altı belirteçten dizi
+bulundu (toplam 156 kayıt). Temizleme aşamasında altı lokusun hiçbirinden kısa,
+belirsiz veya yinelenen dizi çıkarılmadı. COI alt sınırı ≥658 bp olarak
+uygulandı. Türler arası aynı diziler yanlışlıkla yinelenen sayılmıyor; yalnızca
+aynı tür içindeki kopyalar tekilleştiriliyor. Arama, uygun uzunluktaki kayıtlar
+içinde daha uzun diziyi seçiyor ve bulunan mitokondriyal kayıtlardan ek COI
+CDS'lerini de tarıyor.
 
-  Familya Nymphalidae (5 tür):
-    · Danaus plexippus (Monarch Kelebeği)
-    · Vanessa indica   (Hint Bayan Kelebeği)
-    · Vanessa cardui   (Deveboynu Kelebeği)
-    · Junonia almana   (Tavuskuşu Pansesi)
-    · Melitaea cinxia  (Yaban Papatyası Fritillary)
+Belirteç    İndirilen   QC sonrası   Hedef tür
+COI             26          26          26
+COII            26          26          26
+CytB            26          26          26
+ND5             26          26          26
+EF1a            26          26          26
+wingless        26          26          26
 
-  Familya Lycaenidae (3 tür):
-    · Lycaena phlaeas  (Küçük Bakırgül)
-    · Arhopala japonica (Japon Meşe Mavisi)
-    · Curetis bulis    (Asya Güneş Kelebeği)
+3. HİZALAMA, TRİMLEME VE MATRİS
 
-  Familya Hesperiidae (2 tür):
-    · Ampittia dioscorides (Bush Hopper)
-    · Lerema accius    (Obscure Skipper)
+Altı belirteç MAFFT ile ayrı hizalandı. Sonra yalnızca 26 türün tümünde baz
+bulunan sütunlar tutuldu (site occupancy = %100). Bu katı ortak-örtüşme
+seçimi her lokusta boşluk ve eksik takson bırakmadı. Bedeli, bazı hizalamalarda
+özellikle nükleer lokuslarda çok sayıda sütunun elenmesi oldu.
 
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-2. VERİ TOPLAMA BULGULARI (NCBI Entrez)
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+Belirteç   Tür   Tutulan bp   İlk hizalama bp   Tutulan oran   Boşluk
+COI         26       1.512          1.564           %96,68        %0
+COII        26         614            885           %69,38        %0
+CytB        26       1.119          1.161           %96,38        %0
+ND5         26       1.714          1.750           %97,94        %0
+EF1a        26         354          2.142           %16,53        %0
+wingless    26         338          2.163           %15,63        %0
 
-NCBI GenBank'tan toplam 76 dizi başarıyla indirilmiştir:
+Son birleşik süpermatris 26 takson ve 5.651 bp içerir. Eksik takson/lokus
+raporu boştur. Nükleer lokusların kalan ortak bölgesi kısa olduğundan bu
+lokusların ayrı ağaçları sınırlı bilgi taşır; bu durum çıkarımda dikkate
+alınmalıdır.
 
-  Gen    │ İndirilen │ Kalite Kontrolden Geçen │ Kayıp Tür Sayısı
-  ───────┼───────────┼─────────────────────────┼──────────────────
-  COI    │     20    │           2             │       18
-  COII   │     17    │          15             │        5
-  CytB   │     19    │          18             │        2
-  ND5    │     20    │          12             │        8
+4. BİRLEŞİK FİLOGENİ VE GENETİK UZAKLIKLAR
 
-BULGULAR:
-  ► COI için yalnızca 2 dizi kalite eşiğini (≥1000 bp) geçebildi. NCBI'da
-    mevcut COI kayıtlarının büyük bölümü, kısa barkod fragmenti (~658 bp)
-    içermektedir. Bu durum, COI partisyonunun filogenetik gücünü sınırlamıştır.
-  ► CytB en yüksek kapsam ve kalite oranına sahiptir (%95 geçiş oranı).
-  ► ND5 için bazı türlerde yalnızca kısmi gen kayıtları mevcuttur;
-    8 kısa dizi kalite filtresiyle elenmiştir.
-  ► Toplam veri tamamlanma oranı: %56,25 (76/136 olası gen×tür kombinasyonu).
+IQ-TREE 3, ModelFinder tarafından lokuslara ayrı seçilen modellerle maksimum
+olabilirlik analizi yürüttü. 1.000 ultrafast bootstrap tekrarı kullanıldı.
+23 iç düğümün ortalama bootstrap desteği %92,6'dır; 22 düğümde destek ≥%70,
+13 düğümde ≥%95'tir. Bootstrap, hizalamadan yeniden örneklenen sütunlar altında
+düğüm desteğini ölçer; ağacın doğru olma olasılığı değildir.
 
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-3. ÇOKLU DİZİ HİZALAMASI BULGULARI (MAFFT v7.526)
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+Birleşik matriste ortalama çiftli p-distance 0,1600; en düşük değer 0,0713
+(Pieris napi–Pieris rapae), en yüksek değer 0,2527 (Papilio xuthus–Pieris
+rapae) oldu. Bu değerler aynı tamamlanmış matriste hesaplanmıştır.
 
-  Gen  │ Dizi  │ Hizalama │  Boşluk  │ Korunan  │ Değişken │ Parsimony
-       │ Sayısı│ Uzunluğu │   Oranı  │  Bölgeler│ Bölgeler │ Informatif
-  ─────┼───────┼──────────┼──────────┼──────────┼──────────┼───────────
-  COI  │   2   │  1536 bp │   7.10%  │   1368   │   168    │     0
-  COII │  15   │   740 bp │   9.66%  │    480   │   260    │   171
-  CytB │  18   │  1158 bp │   0.83%  │    617   │   541    │   395
-  ND5  │  12   │  1747 bp │   0.81%  │    987   │   760    │   511
+5. MİTOKONDRİYAL VE NÜKLEER SİNYAL
 
-BULGULAR:
-  ► CytB ve ND5 genleri en düşük boşluk oranına sahip olup mükemmel hizalama
-    kalitesi sergilemiştir (<%1 boşluk).
-  ► ND5, 760 değişken bölge ve 511 parsimoni bilgilendirici bölge ile en yüksek
-    filogenetik bilgi içeriğine sahip gendir.
-  ► CytB, 395 parsimoni bilgilendirici bölge ile ikinci sırada yer almaktadır.
-  ► COI'nin yalnızca 2 dizisi olması nedeniyle parsimoni bilgilendirici bölge
-    hesaplanamamış (minimum 3 dizi gerekli); bu gen ağırlıklı olarak sabit
-    bölgelerden oluşmaktadır (1368/1536 = %89 korunan bölge).
-  ► GC içeriği genler arasında farklılık göstermektedir:
-      COI: %27.0 | COII: %22.5 | CytB: %24.0 | ND5: %17.6
-    ND5'in düşük GC içeriği (%17.6), kelebek mitokondriyal genomlarındaki
-    AT-zenginliği (%>75 AT) ile tutarlıdır.
+Mitokondriyal ve nükleer belirteç grupları ayrı ağaçlarda analiz edildi. Her iki
+ağaçta 26 ortak takson ve 23'er iç bölünme bulunuyor. Karşılaştırılan toplam
+42 farklı bölünmenin dördü ortak; proje içi bölünme benzerliği %9,5'tir.
+Bu düşük benzerlik mitonükleer uyumsuzluk için inceleme sinyali verir; tek
+başına introgresyonu, heteroplazmiyi veya belirli bir biyolojik mekanizmayı
+kanıtlamaz. Nükleer tarafın iki kısa lokusa dayanması da yorumu sınırlar.
 
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-4. SUPERMATRİS VE PARTİSYON BULGULARI
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+6. ÖNCEKİ KISITLARIN DURUMU
 
-  Süpermatris boyutu  : 22 takson × 5,181 bp
-  Gen partisyonları   :
-    COI   →  konum 1     – 1.536   (1.536 bp)
-    COII  →  konum 1.537 – 2.276   (740 bp)
-    CytB  →  konum 2.277 – 3.434   (1.158 bp)
-    ND5   →  konum 3.435 – 5.181   (1.747 bp)
+• COI'nin ≥658 bp eşiği uygulandı. Bu analizde COI 26 türün tamamında mevcut;
+  tamamlanmış ortak bölge 1.512 bp'dir.
+• Eksik veri sorunu, veri toplama ve hizalama QC raporlarında giderildi: tüm
+  altı lokusta 26/26 takson, eksik kombinasyon sıfır ve süpermatriste boşluk
+  oranı sıfırdır.
+• Hesperiidae iki türden sekiz türe çıkarıldı; sekizi de analizde yer alıyor.
+• Anne kalıtımlı mtDNA sınırlamasını değerlendirmek için iki nükleer belirteç
+  eklendi ve iki sinyal grubu ayrı karşılaştırıldı. Bu ekleme mitokondriyal
+  kalıtım biçimini değiştirmez; olası uyumsuzluğu görünür kılar.
 
-  Eksik veri oranı:
-    36 gen×tür kombinasyonunda veri bulunmamakta olup bu konumlar süpermatrise
-    '?' karakteriyle doldurulmuştur.
-    En çok eksik veri COI genindedir: 18/20 tür için COI verisi yoktur.
+7. KALAN YÖNTEMSEL YORUM SINIRLARI
 
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-5. FİLOGENETİK ANALİZ BULGULARI (IQ-TREE 2)
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+Eksik veri ve hedef örnekleme sorunları giderilmiş olsa da veri temizliği,
+istatistiksel varsayımları otomatik olarak doğrulamaz. Nükleer EF1a ve
+wingless hizalamalarının sırasıyla yalnızca %16,53 ve %15,63'ü ortak tam
+örtüşmede kaldı; bu nedenle nükleer ağaç ve mitonükleer benzerlik ölçüsü
+özellikle ihtiyatla yorumlanmalıdır. Birleşik IQ-TREE raporundaki takson bazlı baz bileşimi ki-kare kontrolünde
+Vanessa cardui tek başarısız taksondur (p=0,0214; eşik 0,05); diğer 25 takson
+kontrolü geçti. Bu, bileşim homojenliği varsayımının en az bir taksonda
+sağlanmadığını gösteriyor. Bootstrap desteği bu model/örnekleme etkilerini
+ortadan kaldırmaz. Nükleer lokusların genişletilmesi ve bileşim heterojenliğine
+daha dayanıklı modellerle duyarlılık analizi, bilimsel güveni artıracak sonraki
+adımlardır.
 
-5.1 Substitüsyon Modeli Seçimi (ModelFinder — BIC kriteri)
-─────────────────────────────────────────────────────────────
-
-  Gen    │ En İyi Model     │ Yorum
-  ───────┼──────────────────┼─────────────────────────────────────────────────
-  COI    │ GTR+F            │ Genel Time-Reversible, ampirik frekanslar
-  COII   │ TIM2+F+I+G4      │ Değişken oran: değişmez bölgeler + Gamma
-  CytB   │ GTR+F+I+G4       │ GTR + değişmez bölgeler + Gamma dağılımı
-  ND5    │ TIM+F+G4         │ TIM modeli + Gamma hız heterojenitesi
-
-  Birleşik model (BIC): GTR+F:COI, TIM2+F+I+G4:COII, GTR+F+I+G4:CytB, TIM+F+G4:ND5
-
-  Tüm genler (COI hariç) +G4 modeli gerektirmiştir; bu durum, kelebek
-  mitokondriyal genlerinde evrimsel hız değişkenliğinin yaygın olduğunu
-  göstermektedir. COII ve CytB'nin ek olarak +I bileşeni içermesi,
-  bu genlerde sabit bölge oranının anlamlı düzeyde olduğuna işaret eder.
-
-5.2 Ağaç İstatistikleri
-───────────────────────
-  Log-likelihood (ML ağacı)      : -23.742.84
-  AIC skoru                      : 47.639.68
-  BIC skoru                      : 48.144.24
-  İç düğüm sayısı                : 19
-  Bootstrap tekrar sayısı        : 1000 (ultrafast)
-
-5.3 Bootstrap Destek Özeti
-──────────────────────────
-  Bootstrap aralığı              : 44 – 100
-  Ortalama bootstrap desteği     : %73.5
-  İyi destekli düğümler (≥70%)   : 9 / 19  (%47.4)
-  Güçlü destekli düğümler (≥95%) : 7 / 19  (%36.8)
-
-  Yorumlama:
-  ► Ortalama %73.5 bootstrap desteği, ağaç topolojisinin makul düzeyde
-    desteklendiğine işaret eder; ancak %47 oranında düğüm orta-düşük
-    bootstrap değerine sahiptir.
-  ► 7 düğümde ≥95% güçlü destek elde edilmesi, bu kladelerin güvenilir
-    olduğunu göstermektedir.
-  ► Düşük bootstrap değerlerinin muhtemel nedenleri:
-      (1) COI için yetersiz tür kapsama (yalnızca 2 dizi)
-      (2) Eksik veri oranının yüksekliği (özellikle COI partisyonu)
-      (3) Hesperiidae temsilinin azlığı (yalnızca 2 tür)
-
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-6. GENETİK MESAFE ANALİZİ BULGULARI
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-
-  Metod: p-mesafesi (boşluk hariç tutulmuş, eşit ağırlıklı nükleotid farklılığı)
-
-  Genel istatistikler:
-    Ortalama pairwise p-mesafesi  : 0.1351  (%13.5)
-    Minimum p-mesafesi            : 0.0645
-    Maksimum p-mesafesi           : 0.2257
-
-6.1 En Yakın Tür Çiftleri
-──────────────────────────
-  Sıra │ p-mesafe │ Tür 1                  │ Tür 2
-  ─────┼──────────┼────────────────────────┼─────────────────────
-   1   │  0.0645  │ Papilio machaon        │ Papilio xuthus
-   2   │  0.0791  │ Papilio bianor         │ Papilio machaon
-   3   │  0.0806  │ Papilio machaon        │ Papilio polytes
-   4   │  0.0850  │ Papilio glaucus        │ Papilio machaon
-   5   │  0.0877  │ Pieris napi            │ Pieris rapae
-   6   │  0.0905  │ Papilio bianor         │ Papilio xuthus
-   7   │  0.0920  │ Papilio bianor         │ Papilio polytes
-   8   │  0.0934  │ Arhopala japonica      │ Lycaena phlaeas
-
-  YORUM: En düşük genetik mesafe Papilio machaon – Papilio xuthus arasında
-  (%6.45) ölçülmüştür. Bu iki tür aynı cins içinde Asya yayılım alanını
-  paylaşmaktadır ve morfolojik benzerliklerinin moleküler düzeyde de
-  desteklendiği görülmektedir. Pieris napi – Pieris rapae çifti (%8.77)
-  Pieridae ailesi içindeki yakın akrabalığı doğrulamaktadır.
-  Lycaenidae içinde Arhopala japonica – Lycaena phlaeas (%9.34 p-mesafe)
-  arasındaki yakınlık, farklı altfamilyalardan gelmelerine karşın beklenenden
-  düşük bir mesafe sergilemektedir.
-
-6.2 En Uzak Tür Çiftleri
-─────────────────────────
-  Sıra │ p-mesafe │ Tür 1                  │ Tür 2
-  ─────┼──────────┼────────────────────────┼─────────────────────
-   1   │  0.2257  │ Delias pasithoe        │ Vanessa indica
-   2   │  0.2185  │ Danaus plexippus       │ Delias pasithoe
-   3   │  0.2066  │ Delias pasithoe        │ Melitaea cinxia
-   4   │  0.2011  │ Delias pasithoe        │ Lerema accius
-   5   │  0.1988  │ Ampittia dioscorides   │ Pieris rapae
-   6   │  0.1984  │ Delias pasithoe        │ Papilio machaon
-   7   │  0.1950  │ Melitaea cinxia        │ Pieris rapae
-   8   │  0.1950  │ Danaus plexippus       │ Pieris napi
-
-  YORUM: En yüksek genetik mesafe Delias pasithoe (Pieridae) ile Vanessa indica
-  (Nymphalidae) arasında (%22.57) saptanmıştır. Delias pasithoe, analizlerde
-  genellikle en uzak pozisyonlarda yer almaktadır; bu durum Delias cinsinin
-  erken dönemde Pieridae'nin diğer kollarından ayrılmış monofil bir grup
-  oluşturduğunu düşündürmektedir. Familyalar arası (Pieridae–Nymphalidae)
-  mesafelerin %18–23 arasında değişmesi, lepidopter evrimi için yayınlanan
-  değerlerle uyum içindedir (Heikkilä et al. 2012).
-
-6.3 Familya İçi ve Familyalar Arası Mesafe Özeti
-──────────────────────────────────────────────────
-  Papilio cins içi ortalama mesafe   : ~0.082  (%8.2) — yüksek tür çeşitliliği
-  Pieris cins içi mesafe             : ~0.088  (%8.8)
-  Papilionidae – Pieridae arası      : ~0.140–0.165
-  Papilionidae – Nymphalidae arası   : ~0.140–0.175
-  Pieridae – Lycaenidae arası        : ~0.155–0.190
-  Hesperiidae – diğer familyalar     : ~0.130–0.200
-
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-7. FİLOGENETİK YAPI VE EVRİMSEL ÇIKARIMLAR
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-
-7.1 Familya Düzeyinde Monofili
-───────────────────────────────
-Elde edilen ML ağacı değerlendirildiğinde:
-
-  ► Papilionidae: 5 Papilio türü güçlü bootstrap desteği ile (≥95) monofiletik
-    bir klade oluşturmaktadır. Bu sonuç, familyanın köken birliğiyle tutarlıdır.
-
-  ► Pieridae: Delias pasithoe'nun COI ve ND5 verisi eksikliği nedeniyle
-    Pieridae'nin monofilisi kısmen etkilenmiş olsa da CytB verisine göre
-    familya genel olarak monofiletik görünmektedir.
-
-  ► Nymphalidae: En büyük ve evrimsel açıdan en çeşitli familyadır. Monarch
-    (Danaus), admiral (Vanessa) ve fritillary (Melitaea) grupları birbirinden
-    belirgin şekilde ayrışmaktadır.
-
-  ► Lycaenidae: Arhopala ve Lycaena cinsleri birbirine yakın konumlanmakla
-    birlikte, Curetis bulis'in (Curetinae altfamilyası) taksonomik pozisyonu
-    dikkat çekicidir.
-
-  ► Hesperiidae: Sadece 2 temsilciyle temsil edilen bu familya, ağaçta diğer
-    familyalardan belirgin bir dallanma gösteren bazal bir konum sergilemiştir;
-    ancak düşük bootstrap değeri (%44–60) bu ilişkiyi belirsizleştirmektedir.
-
-7.2 Evrimsel Hız Farklılıkları
-───────────────────────────────
-  Dal uzunlukları karşılaştırıldığında:
-  - CytB ve ND5: Yüksek evrimsel hız (dal uzunluğu ≈ 3.0 subs/site)
-  - COI: Düşük evrimsel hız (dal uzunluğu ≈ 0.185 subs/site) — bu gen,
-    protein işlevi için kısıtlı pozisyonlara sahip olduğundan daha muhafazakardır.
-
-7.3 Taksonomik Notlar
-─────────────────────
-  Süpermatriste 22 kayıt görünmesinin nedeni, bazı türlerin NCBI'da alt tür
-  düzeyinde kayıtlı olmasıdır:
-    · Papilio machaon annae  (Papilio machaon alt türü)
-    · Pieris napi napi       (Pieris napi alt türü)
-    · Danaus plexippus megalippe (Monarch alt türü)
-
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-8. YÖNTEMİN GÜÇLÜ YÖNLERİ VE KISITLAMALARI
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-
-  Güçlü yönler:
-  ✓ 4 farklı mitokondriyal genin birleştirilerek süpermatris oluşturulması,
-    tek gen analizine kıyasla filogenetik gücü artırmıştır.
-  ✓ Partisyon-bazlı model seçimi (ModelFinder): Her gen için bağımsız en
-    uygun substitüsyon modeli belirlenmiştir.
-  ✓ 1000 ultrafast bootstrap ile istatistiksel destek değerlendirmesi yapılmıştır.
-  ✓ Gerçek NCBI verisi kullanılmış; analiz tamamen tekrarlanabilirdir.
-
-  Kısıtlamalar:
-  ✗ COI geninde yalnızca 2 dizinin kalite eşiğini geçmesi bilgi kaybına
-    yol açmıştır; COI minimum uzunluk eşiği düşürülerek daha fazla dizi
-    dahil edilebilir (≥658 bp önerilir).
-  ✗ Eksik veri oranının yüksekliği (özellikle COI: 18 tür eksik) bazı
-    düğümlerin bootstrap desteğini olumsuz etkilemiştir.
-  ✗ Mitokondriyal genler yalnızca anne soyunu takip ettiğinden, heteroplazmi
-    veya introgresyon durumlarında yanıltıcı sonuçlar verebilir.
-  ✗ Hesperiidae yalnızca 2 türle temsil edilmektedir; daha kapsamlı bir
-    analizde en az 5 tür eklenmesi önerilir.
-
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-9. ÖNERİLER VE GELECEK ÇALIŞMALAR
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-
-  1. COI minimum uzunluk eşiği 658 bp olarak güncellenmeli; bu sayede çok
-     daha fazla tür COI partisyonuna dahil edilebilir.
-
-  2. Nükleer lokuslar (wingless, EF-1α) eklenerek çok-lokuslu filogenetik
-     analiz yapılması ağaç güvenilirliğini artıracaktır.
-
-  3. Bayesian analiz (MrBayes veya BEAST) ile zaman-kalibrasyonlu ağaç
-     oluşturularak familyaların ayrışma tarihleri tahmin edilebilir.
-
-  4. Hesperiidae için en az 3 ek tür (örn. Hesperia comma, Ochlodes sylvanus,
-     Thymelicus sylvestris) eklenmesi bu familyanın pozisyonunu güçlendirir.
-
-  5. COI gen bölgesi için barkod veritabanı BOLD Systems da aranabilir;
-     NCBI'da bulunmayan kısa barkod dizileri bu veritabanında mevcuttur.
-
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-10. ÖZET SONUÇLAR
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-
-  • NCBI'dan 76 mitokondriyal gen dizisi indirilerek 4 gen için 47 kaliteli
-    dizi elde edilmiş ve 5181 bp uzunluğunda birleşik bir süpermatris
-    oluşturulmuştur.
-
-  • ModelFinder analizi sonucunda farklı genler için farklı substitüsyon
-    modelleri seçilmiş (GTR+F, TIM2+F+I+G4, GTR+F+I+G4, TIM+F+G4); bu
-    sonuç, mitokondriyal genlerin birbirinden farklı evrimsel kısıtlamalara
-    tabi olduğunu kanıtlamaktadır.
-
-  • 1000 ultrafast bootstrap ile elde edilen ML ağacında ortalama %73.5
-    destek değeri sağlanmış; 7 düğüm ≥95% güçlü destek almıştır.
-
-  • En yakın tür çifti: Papilio machaon – Papilio xuthus (p = 0.0645)
-    En uzak tür çifti: Delias pasithoe – Vanessa indica (p = 0.2257)
-
-  • Ortalama pairwise p-mesafesi 0.1351 olup bu değer, familyalar arası
-    lepidopter çeşitliliği için literatürde bildirilen değerlerle uyumludur.
-
-  • Familya monofilisi genel olarak desteklenmiş; özellikle Papilionidae ve
-    Pieridae için güçlü topolojik bulgular elde edilmiştir.
-
-  • Tüm analizler tam otomatik ve tekrarlanabilir bir pipeline ile
-    gerçekleştirilmiş; ham veriden ağaç görselleştirmesine kadar her adım
-    kayıt altına alınmış ve GitHub üzerinden paylaşıma hazır hale getirilmiştir.
-
-════════════════════════════════════════════════════════════════════════════════
-  ATIFLAR
-════════════════════════════════════════════════════════════════════════════════
-
-  Biopython: Cock et al. (2009) Bioinformatics 25:1422–1423
-  MAFFT:     Katoh & Standley (2013) Mol. Biol. Evol. 30:772–780
-  IQ-TREE 2: Minh et al. (2020) Mol. Biol. Evol. 37:1530–1534
-  ModelFinder: Kalyaanamoorthy et al. (2017) Nat. Methods 14:587–589
-  Heikkilä et al. (2012) Syst. Entomol. 37:716–732 — Lepidoptera filogeni
-
-════════════════════════════════════════════════════════════════════════════════
-  Dosya: results/bulgular.txt  |  Proje: butterfly_phylogeny
-════════════════════════════════════════════════════════════════════════════════
+Güncel yeniden üretilebilir çıktılar:
+  results/tree/butterfly.treefile
+  results/tree/butterfly.contree
+  results/inheritance/mitochondrial.treefile
+  results/inheritance/nuclear.treefile
+  results/inheritance/comparison.txt
+  data/aligned/alignment_qc_per_gene.csv
+  data/aligned/missing_taxa_report.csv

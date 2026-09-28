@@ -2,7 +2,7 @@
 """
 00_generate_synthetic_data.py
 -----------------------------
-Generates realistic synthetic mitochondrial gene sequences for 20 butterfly
+Generates synthetic mitochondrial and nuclear marker sequences for 26 butterfly
 species when NCBI is not accessible.
 
 Simulation model:
@@ -38,6 +38,8 @@ GENE_LENGTHS: dict[str, int] = {
     "COII": 690,
     "CytB": 1140,
     "ND5":  1740,
+    "EF1a": 1200,
+    "wingless": 400,
 }
 
 # Butterfly mtDNA base frequencies (AT-rich)
@@ -51,17 +53,19 @@ FAMILIES: dict[str, list[str]] = {
     ],
     "Pieridae": [
         "Pieris_rapae", "Pieris_napi", "Gonepteryx_rhamni",
-        "Delias_pasithoe", "Eurema_hecabe",
+        "Aporia_crataegi", "Eurema_hecabe",
     ],
     "Nymphalidae": [
         "Danaus_plexippus", "Vanessa_indica", "Vanessa_cardui",
         "Junonia_almana", "Melitaea_cinxia",
     ],
     "Lycaenidae": [
-        "Lycaena_phlaeas", "Arhopala_japonica", "Curetis_bulis",
+        "Lycaena_phlaeas", "Plebejus_argus", "Curetis_bulis",
     ],
     "Hesperiidae": [
-        "Ampittia_dioscorides", "Lerema_accius",
+        "Ampittia_dioscorides", "Ochlodes_venata", "Parnara_guttata",
+        "Heteropterus_morpheus", "Pyrgus_malvae",
+        "Celaenorrhinus_maculosus", "Ctenoptilum_vasava", "Notocrypta_curvifascia",
     ],
 }
 

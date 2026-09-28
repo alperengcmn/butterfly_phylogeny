@@ -1,0 +1,8 @@
+#nexus
+begin sets;
+  charset EF1a = 1-354;
+  charset wingless = 355-692;
+  charpartition mymodels =
+    GTR+I+R3: EF1a,
+    GTR+F+G4: wingless;
+end;

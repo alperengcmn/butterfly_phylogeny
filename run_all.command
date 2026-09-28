@@ -48,20 +48,20 @@ else
 fi
 
 # ── 3. IQ-TREE ───────────────────────────────────────────────────────────────
-if command -v iqtree2 &>/dev/null || command -v iqtree &>/dev/null; then
-  IQBIN=$(command -v iqtree2 || command -v iqtree)
+if command -v iqtree3 &>/dev/null || command -v iqtree2 &>/dev/null || command -v iqtree &>/dev/null; then
+  IQBIN=$(command -v iqtree3 || command -v iqtree2 || command -v iqtree)
   echo "  ✓ IQ-TREE already installed: $IQBIN"
 else
   echo "▶ Installing IQ-TREE via conda..."
   conda install -y -c bioconda iqtree -q 2>/dev/null || true
 
-  if ! command -v iqtree2 &>/dev/null && ! command -v iqtree &>/dev/null; then
+  if ! command -v iqtree3 &>/dev/null && ! command -v iqtree2 &>/dev/null && ! command -v iqtree &>/dev/null; then
     echo "▶ conda failed, trying brew tap trust..."
     brew trust brewsci/bio 2>/dev/null || true
     brew install brewsci/bio/iqtree 2>/dev/null || true
   fi
 
-  if command -v iqtree2 &>/dev/null || command -v iqtree &>/dev/null; then
+  if command -v iqtree3 &>/dev/null || command -v iqtree2 &>/dev/null || command -v iqtree &>/dev/null; then
     echo "  ✓ IQ-TREE installed"
   else
     echo "  ⚠ IQ-TREE not found — Step 6 will use Biopython NJ fallback"
@@ -96,7 +96,9 @@ run_step 5  "Building supermatrix"               scripts/05_concatenate.py
 run_step 6  "Phylogenetic analysis (IQ-TREE)"    scripts/06_run_iqtree.py
 run_step 7  "Pairwise genetic distances"         scripts/07_genetic_distances.py
 run_step 8  "Tree visualisation"                 scripts/08_visualize_tree.py
-run_step 9  "Generating reports"                 scripts/09_generate_report.py
+run_step 9  "Comparing mitochondrial and nuclear trees" scripts/11_compare_inheritance.py
+run_step 10 "Generating reports"                 scripts/09_generate_report.py
+run_step 11 "Generating summary figure"          scripts/10_summary_figure.py
 
 echo ""
 echo "════════════════════════════════════════════════════════════════"

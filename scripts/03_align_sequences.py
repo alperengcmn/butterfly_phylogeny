@@ -4,7 +4,7 @@
 ---------------------
 Multiple sequence alignment of cleaned FASTA files using MAFFT.
 
-For each gene (COI, COII, CytB, ND5):
+For each marker (COI, COII, CytB, ND5, EF1a, wingless):
   - Runs MAFFT (--auto strategy, adjustdirection for strand issues).
   - Saves aligned FASTA to data/aligned/.
   - Computes per-gene alignment statistics.
@@ -32,7 +32,7 @@ from Bio.Align import MultipleSeqAlignment
 
 # ─── Constants ────────────────────────────────────────────────────────────────
 
-GENES: list[str] = ["COI", "COII", "CytB", "ND5"]
+GENES: list[str] = ["COI", "COII", "CytB", "ND5", "EF1a", "wingless"]
 
 CLEAN_DIR   = Path("data/cleaned")
 ALIGNED_DIR = Path("data/aligned")
@@ -43,7 +43,7 @@ LOG_FILE    = Path("logs/03_align.log")
 MAFFT_ARGS: list[str] = [
     "--auto",           # auto-select strategy based on data size
     "--adjustdirection",# correct for reverse complement sequences
-    "--thread", "-1",   # use all available CPU cores
+    "--thread", "1",    # deterministic and compatible with restricted runtimes
     "--quiet",          # suppress progress output
 ]
 
@@ -153,10 +153,13 @@ def run() -> None:
 
     mafft_bin = check_mafft()
     all_stats: list[dict] = []
+    failures: list[str] = []
 
     for gene in GENES:
         in_path  = CLEAN_DIR   / f"{gene}_cleaned.fasta"
         out_path = ALIGNED_DIR / f"{gene}_aligned.fasta"
+        # Never let a previous run's alignment masquerade as current output.
+        out_path.unlink(missing_ok=True)
 
         if not in_path.exists():
             log.warning("Cleaned FASTA not found: %s — skipping.", in_path)
@@ -174,6 +177,7 @@ def run() -> None:
             run_mafft(in_path, out_path, mafft_bin)
         except RuntimeError as exc:
             log.error("Alignment failed for %s: %s", gene, exc)
+            failures.append(gene)
             continue
 
         # Load alignment and compute stats
@@ -192,6 +196,7 @@ def run() -> None:
             )
         except Exception as exc:
             log.error("Could not read alignment for %s: %s", gene, exc)
+            failures.append(gene)
 
     # Write stats CSV
     if all_stats:
@@ -202,6 +207,8 @@ def run() -> None:
             writer.writerows(all_stats)
         log.info("Alignment stats → %s", STATS_FILE)
 
+    if failures:
+        raise RuntimeError("Alignment failed for: " + ", ".join(failures))
     log.info("Step 3 complete.")
 
 
